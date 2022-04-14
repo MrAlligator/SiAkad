@@ -62,6 +62,8 @@ $route['siswa'] = 'frontend/siswa';
 /* Backend */
 //Admin
 $route['dashboard'] = 'backend/home';
+
+//Admin Read
 $route['data-berita'] = 'backend/berita';
 $route['data-pengumuman'] = 'backend/pengumuman';
 $route['data-siswa'] = 'backend/siswa';
@@ -71,3 +73,6 @@ $route['data-absensi'] = 'backend/absensi';
 $route['data-galeri'] = 'backend/galeri';
 $route['data-prestasi'] = 'backend/prestasi';
 $route['data-walikelas'] = 'backend/walikelas';
+
+//Admin Create
+$route['tambah-siswa'] = 'backend/siswa/create';

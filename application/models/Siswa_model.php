@@ -10,7 +10,7 @@ class Siswa_model extends CI_Model
         return $this->db->get($this->_table)->result_array();
     }
 
-    public function countUsers()
+    public function count()
     {
         $query = $this->db->get($this->_table);
         if ($query->num_rows() > 0) {
