@@ -20,16 +20,22 @@ class Siswa_model extends CI_Model
         }
     }
 
-    public function get_latest_id_user()
-    {
-        $this->db->select('user_id');
-        $this->db->order_by('user_id', 'desc');
-        $this->db->limit(1);
-        return $this->db->get($this->_table)->row_array();
-    }
-
     public function inputData($data)
     {
         return $this->db->insert($this->_table, $data);
+    }
+
+    public function deleteData($id)
+    {
+        $row = $this->db->where($id, 'id_siswa')->get($this->_table)->row_array();
+        if ($row['image_siswa'] != 'default.png') {
+            unlink('./assets/img/siswa/' . $row['image_siswa']);
+        }
+        return $this->db->where($id)->delete($this->_table);
+    }
+
+    public function getById($id)
+    {
+        return $this->db->get_where($this->_table, $id)->row_array();
     }
 }

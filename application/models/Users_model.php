@@ -7,7 +7,7 @@ class Users_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->where('user_id !=', 3)->get($this->_table)->result_array();
+        return $this->db->get($this->_table)->result_array();
     }
 
     public function countUsers()
@@ -31,5 +31,10 @@ class Users_model extends CI_Model
     public function inputData($data)
     {
         return $this->db->insert($this->_table, $data);
+    }
+
+    public function deleteData($id)
+    {
+        return $this->db->where($id)->delete($this->_table);
     }
 }

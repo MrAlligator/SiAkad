@@ -53,7 +53,7 @@
         </a>
     </li>
 
-    <?php if ($user['status_user'] == '1') : ?>
+    <?php if ($user['status_user'] == 1) : ?>
 
         <!-- Divider -->
         <hr class="sidebar-divider mt-3">

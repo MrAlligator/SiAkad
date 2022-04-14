@@ -76,3 +76,13 @@ $route['data-walikelas'] = 'backend/walikelas';
 
 //Admin Create
 $route['tambah-siswa'] = 'backend/siswa/create';
+
+//Admin Delete
+$route['hapus-siswa/(:num)'] = function ($id_siswa) {
+    return 'backend/siswa/delete' . '/' . $id_siswa;
+};
+
+//Admin Update
+$route['ubah-siswa/(:num)'] = function ($id_siswa) {
+    return 'backend/siswa/update' . '/' . $id_siswa;
+};

@@ -46,12 +46,12 @@
                                     <td><?= $student['kelas'] ?></td>
                                     <td><?= $student['jk_siswa'] ?></td>
                                     <td><?= $student['agama_siswa'] ?></td>
-                                    <td><?= $student['tmptlhr_siswa'] . ', ' . $student['tgllhr_siswa'] ?></td>
+                                    <td><?= $student['tmptlhr_siswa'] . ', ' . date('d, M Y', $student['tgllhr_siswa']) ?></td>
                                     <td><?= $student['alamat_siswa'] ?></td>
                                     <td><?= $student['telp_siswa'] ?></td>
                                     <td>
                                         <a href="<?= base_url('view-artikel/' . $student['id_siswa']) ?>" class="badge badge-primary"><i class="fas fa-fw fa-info-circle"></i></a>
-                                        <a href="<?= base_url('edit-artikel/' . $student['id_siswa']) ?>" class="badge badge-warning"><i class="fas fa-fw fa-edit"></i></a>
+                                        <a href="<?= base_url('ubah-siswa/' . $student['id_siswa']) ?>" class="badge badge-warning"><i class="fas fa-fw fa-edit"></i></a>
                                         <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $student['id_siswa'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
@@ -86,7 +86,7 @@
                 <div class="modal-body">Data yang Dihapus tidak bisa dikembalikan</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?= base_url('delete-artikel/' . $student['id_siswa']) ?>">Yakin</a>
+                    <a class="btn btn-primary" href="<?= base_url('hapus-siswa/' . $student['id_siswa']) ?>">Yakin</a>
                 </div>
             </div>
         </div>

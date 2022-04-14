@@ -10,50 +10,67 @@
             <div class="card-body">
                 <div class="form-group row">
                     <div class="col mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" name="nis" id="nis" placeholder="Nomor Induk Siswa"><?= form_error('nis', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="text" class="form-control form-control-user" name="nis" id="nis" value="<?= $studentdata['nis'] ?>" readonly placeholder="Nomor Induk Siswa"><?= form_error('nis', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" name="fname" id="fname" placeholder="Nama Depan"><?= form_error('fname', '<small class="text-danger pl-3">', '</small>') ?>
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" name="lname" id="lname" placeholder="Nama Belakang"><?= form_error('lname', '<small class="text-danger pl-3">', '</small>') ?>
+                    <div class="col mb-3 mb-sm-0">
+                        <input type="text" class="form-control form-control-user" name="fname" id="fname" placeholder="Nama Depan" value="<?= $studentdata['nama_siswa'] ?>"><?= form_error('fname', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col mb-3 mb-sm-0">
                         <select class="form-control" name="jk" id="jk" required>
                             <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                            <option value="Laki - Laki">Laki - Laki</option>
-                            <option value="Perempuan">Perempuan</option>
+                            <option value="Laki - Laki" <?php if ($studentdata['jk_siswa'] == 'Laki - Laki') {
+                                                            echo 'selected';
+                                                        } ?>>Laki - Laki</option>
+                            <option value="Perempuan" <?php if ($studentdata['jk_siswa'] == 'Perempuan') {
+                                                            echo 'selected';
+                                                        } ?>>Perempuan</option>
                         </select>
                     </div>
                     <div class="col mb-3 mb-sm-0">
                         <select class="form-control" name="kelas" id="kelas" required>
                             <option value="" selected disabled>Pilih Kelas</option>
-                            <option value="X">X</option>
-                            <option value="XI">XI</option>
-                            <option value="XII">XII</option>
+                            <option value="X" <?php if ($studentdata['kelas'] == 'X') {
+                                                    echo 'selected';
+                                                } ?>>X</option>
+                            <option value="XI" <?php if ($studentdata['kelas'] == 'XI') {
+                                                    echo 'selected';
+                                                } ?>>XI</option>
+                            <option value="XII" <?php if ($studentdata['kelas'] == 'XII') {
+                                                    echo 'selected';
+                                                } ?>>XII</option>
                         </select>
                     </div>
                     <div class="col mb-3 mb-sm-0">
                         <select class="form-control" name="agama" id="agama" required>
                             <option value="" selected disabled>Pilih Agama</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Kristen">Kristen</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Budha">Budha</option>
-                            <option value="Katolik">Katolik</option>
+                            <option value="Islam" <?php if ($studentdata['agama_siswa'] == 'Islam') {
+                                                        echo 'selected';
+                                                    } ?>>Islam</option>
+                            <option value="Kristen" <?php if ($studentdata['agama_siswa'] == 'Kristen') {
+                                                        echo 'selected';
+                                                    } ?>>Kristen</option>
+                            <option value="Hindu" <?php if ($studentdata['agama_siswa'] == 'Hindu') {
+                                                        echo 'selected';
+                                                    } ?>>Hindu</option>
+                            <option value="Budha" <?php if ($studentdata['agama_siswa'] == 'Budha') {
+                                                        echo 'selected';
+                                                    } ?>>Budha</option>
+                            <option value="Katolik" <?php if ($studentdata['agama_siswa'] == 'Katolik') {
+                                                        echo 'selected';
+                                                    } ?>>Katolik</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" name="tempatlhr" id="tempatlhr" placeholder="Tempat Lahir"><?= form_error('tempatlhr', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="text" class="form-control form-control-user" name="tempatlhr" id="tempatlhr" placeholder="Tempat Lahir" value="<?= $studentdata['tmptlhr_siswa'] ?>"><?= form_error('tempatlhr', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                     <div class="col-sm-6">
-                        <input type="date" class="form-control form-control-user" name="tanggallhr" id="tanggallhr" placeholder="Tanggal Lahir"><?= form_error('tanggallhr', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="date" class="form-control form-control-user" name="tanggallhr" id="tanggallhr" placeholder="Tanggal Lahir" value="<?= $studentdata['tgllhr_siswa'] ?>"><?= form_error('tanggallhr', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
