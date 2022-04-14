@@ -21,10 +21,9 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">NIS</th>
+                        <th scope="col">NIP</th>
                         <th scope="col">Jenis Kelamin</th>
                         <th scope="col">Agama</th>
-                        <th scope="col">Kelas</th>
                         <th scope="col">Tempat, Tanggal Lahir</th>
                         <th scope="col">Alamat</th>
                     </tr>
@@ -33,17 +32,16 @@
                 </tbody>
         </div>
         <?php $i = 1;
-        foreach ($dataSiswa as $dataSiswa) : ?>
+        foreach ($dataGuru as $dataGuru) : ?>
             <div class="table-row">
                 <tr>
                     <td><?= $i++ ?></td>
-                    <td><a href="<?= base_url('detail-siswa/' . $dataSiswa['nis']) ?>"><?= $dataSiswa['nama_siswa'] ?></a></td>
-                    <td><?= $dataSiswa['nis'] ?></td>
-                    <td><?= $dataSiswa['jk_siswa'] ?></td>
-                    <td><?= $dataSiswa['agama_siswa'] ?></td>
-                    <td><?= $dataSiswa['kelas'] ?></td>
-                    <td><?= $dataSiswa['tmptlhr_siswa'] . ", " . $dataSiswa['tgllhr_siswa'] ?></td>
-                    <td><?= $dataSiswa['alamat_siswa'] ?></td>
+                    <td><a href="<?= base_url('detail-siswa/' . $dataGuru['nip']) ?>"><?= $dataGuru['nama_guru'] ?></a></td>
+                    <td><?= $dataGuru['nip'] ?></td>
+                    <td><?= $dataGuru['jk_guru'] ?></td>
+                    <td><?= $dataGuru['agama_guru'] ?></td>
+                    <td><?= $dataGuru['tmptlahir_guru'] . ", " . $dataGuru['tgllahir_guru'] ?></td>
+                    <td><?= $dataGuru['alamat_guru'] ?></td>
                 </tr>
             </div>
         <?php endforeach ?>

@@ -57,7 +57,11 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'frontend/login';
 
 //Frontend
+$route['guru'] = 'frontend/guru';
 $route['siswa'] = 'frontend/siswa';
+$route['detail-siswa/(:any)'] = function ($id_siswa) {
+    return 'frontend/siswa/detail/' . $id_siswa;
+};
 
 /* Backend */
 //Admin

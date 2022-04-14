@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Siswa_model extends CI_Model
+class Guru_model extends CI_Model
 {
-    private $_table = "tb_siswa";
+    private $_table = "tb_guru";
 
     public function getAll()
     {
@@ -14,7 +14,7 @@ class Siswa_model extends CI_Model
         return $this->db->where($where)->get($this->_table)->row_array();
     }
 
-    public function count()
+    public function countUsers()
     {
         $query = $this->db->get($this->_table);
         if ($query->num_rows() > 0) {
