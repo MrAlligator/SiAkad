@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 //Login
 $route['login'] = 'frontend/login';
+$route['siswa'] = 'frontend/siswa';
