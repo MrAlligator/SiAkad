@@ -55,3 +55,16 @@ $route['translate_uri_dashes'] = FALSE;
 
 //Login
 $route['login'] = 'frontend/login';
+
+/* Backend */
+//Admin
+$route['dashboard'] = 'backend/home';
+$route['data-berita'] = 'backend/berita';
+$route['data-pengumuman'] = 'backend/pengumuman';
+$route['data-siswa'] = 'backend/siswa';
+$route['data-guru'] = 'backend/guru';
+$route['data-karyawan'] = 'backend/karyawan';
+$route['data-absensi'] = 'backend/absensi';
+$route['data-galeri'] = 'backend/galeri';
+$route['data-prestasi'] = 'backend/prestasi';
+$route['data-walikelas'] = 'backend/walikelas';
