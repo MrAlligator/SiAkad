@@ -17,14 +17,14 @@
         </div>
         <div class="login">
             <div class="inset">
-                <form action="cek_log.php" method="POST">
+                <form action="<?= base_url('login') ?>" method="POST">
                     <div>
                         <span><label>Username</label></span>
                         <span><input type="text" class="textbox" name="username" placeholder="NIM / NIP"></span>
                     </div>
                     <div>
                         <span><label>Password</label></span>
-                        <span><input type="password" id="pass" name="pass" class="password" placeholder="Password"></span>
+                        <span><input type="password" id="password" name="password" class="password" placeholder="Password"></span>
                         <span><input type="checkbox" id="show-pass" name="show-pass"> Show password<br><br></span>
                     </div>
                     <hr>
