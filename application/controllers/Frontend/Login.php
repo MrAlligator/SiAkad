@@ -17,8 +17,8 @@ class Login extends CI_Controller
             'required' => 'Password Tidak Boleh Kosong!'
         ]);
 
-        if (isset($_SESSION['email'])) {
-            redirect('backend');
+        if (isset($_SESSION['username'])) {
+            redirect(base_url());
         } else {
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('frontend/login/index');
@@ -43,6 +43,7 @@ class Login extends CI_Controller
                 //data yang akan dimasukkan session
                 $data = [
                     'username' => $user['username_user'],
+                    'password' => $user['password_user'],
                     'level' => $user['status_user']
                 ];
                 $this->session->set_userdata($data); //menyimpan data ke dalam session
@@ -61,6 +62,7 @@ class Login extends CI_Controller
     {
         //menghapus session
         $this->session->unset_userdata('username');
+        $this->session->unset_userdata('password');
         $this->session->unset_userdata('level');
     }
 }
