@@ -84,6 +84,7 @@ $route['tambah-siswa'] = 'backend/siswa/create';
 $route['tambah-guru'] = 'backend/guru/create';
 $route['tambah-karyawan'] = 'backend/karyawan/create';
 $route['tambah-galeri'] = 'backend/galeri/create';
+$route['tambah-prestasi'] = 'backend/prestasi/create';
 
 //Admin Delete
 $route['hapus-siswa/(:num)'] = function ($id_siswa) {
@@ -94,6 +95,12 @@ $route['hapus-guru/(:num)'] = function ($id_guru) {
 };
 $route['hapus-karyawan/(:num)'] = function ($id_guru) {
     return 'backend/karyawan/delete' . '/' . $id_guru;
+};
+$route['hapus-galeri/(:num)'] = function ($id_media) {
+    return 'backend/galeri/delete' . '/' . $id_media;
+};
+$route['hapus-prestasi/(:num)'] = function ($id_prestasi) {
+    return 'backend/prestasi/delete' . '/' . $id_prestasi;
 };
 
 //Admin Update

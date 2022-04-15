@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Media_model extends CI_Model
+class Prestasi_model extends CI_Model
 {
-    private $_table = "tb_media";
+    private $_table = "tb_prestasi";
 
     public function getAll()
     {
@@ -27,9 +27,9 @@ class Media_model extends CI_Model
 
     public function deleteData($id)
     {
-        $row = $this->db->where($id, 'id_media')->get($this->_table)->row_array();
+        $row = $this->db->where($id, 'id_prestasi')->get($this->_table)->row_array();
         if ($row['file_name'] != 'default.png') {
-            unlink('./assets/media/' . $row['file_name']);
+            unlink('./assets/img/prestasi/' . $row['file_name']);
         }
         return $this->db->where($id)->delete($this->_table);
     }

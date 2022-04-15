@@ -63,15 +63,6 @@
             Administrator
         </div>
 
-        <li class="nav-item <?php if ($is_active == 'adm') {
-                                echo 'active';
-                            } ?>">
-            <a class="nav-link pb-0" href="<?= base_url('administrator/data-pakar') ?>">
-                <i class="fas fa-fw fa-user-md"></i>
-                <span>Data Admin</span>
-            </a>
-        </li>
-
         <li class="nav-item <?php if ($is_active == 'sbr') {
                                 echo 'active';
                             } ?>">

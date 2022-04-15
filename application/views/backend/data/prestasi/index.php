@@ -15,7 +15,7 @@
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-header">Dropdown Header:</div>
                     <?php if ($user['status_user'] == 1) : ?>
-                        <a class="dropdown-item" href="<?= base_url('tambah-galeri') ?>">Tambah Baru</a>
+                        <a class="dropdown-item" href="<?= base_url('tambah-prestasi') ?>">Tambah Baru</a>
                     <?php endif; ?>
                     <a class="dropdown-item" href="<?= base_url('truncate-artikel') ?>">Kosongkan Tabel</a>
                 </div>
@@ -28,28 +28,26 @@
                         <tr>
                             <th>No</th>
                             <th>Judul</th>
-                            <th>Jenis Media</th>
                             <th>Media</th>
                             <th>Diupload Pada</th>
-                            <th>Action</th>
+                            <?php if ($user['status_user'] == 1) : ?>
+                                <th>Action</th>
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
                         <?php if ($count > 0) : ?>
-                            <?php foreach ($medias as $media) : ?>
+                            <?php foreach ($achivements as $achivement) : ?>
                                 <tr>
                                     <td><?= ++$start ?></td>
-                                    <td><?= $media['judul_media'] ?></td>
-                                    <td><?php if ($media['jenis_media'] == 1) {
-                                            echo 'Video';
-                                        } elseif ($media['jenis_media' == 2]) {
-                                            echo 'Gambar';
-                                        } ?></td>
-                                    <td><img src="<?= base_url('assets/media/' . $media['file_name']) ?>" width="200" alt=""></td>
-                                    <td><?= date('d M Y', $media['uploaded_at']) ?></td>
-                                    <td class="text-center">
-                                        <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $media['id_media'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
-                                    </td>
+                                    <td><?= $achivement['judul'] ?></td>
+                                    <td><img src="<?= base_url('assets/img/prestasi/' . $achivement['file_name']) ?>" width="200" alt=""></td>
+                                    <td><?= date('d M Y', $achivement['uploaded_at']) ?></td>
+                                    <?php if ($user['status_user'] == 1) : ?>
+                                        <td class="text-center">
+                                            <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $achivement['id_prestasi'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                                        </td>
+                                    <?php endif; ?>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
@@ -69,8 +67,8 @@
 <!-- End of Main Content -->
 
 <!-- Delete Modal-->
-<?php foreach ($medias as $media) : ?>
-    <div class="modal fade" id="deleteModal-<?= $media['id_media'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php foreach ($achivements as $achivement) : ?>
+    <div class="modal fade" id="deleteModal-<?= $achivement['id_prestasi'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -82,7 +80,7 @@
                 <div class="modal-body">Data yang Dihapus tidak bisa dikembalikan</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?= base_url('hapus-galeri/' . $media['id_media']) ?>">Yakin</a>
+                    <a class="btn btn-primary" href="<?= base_url('hapus-prestasi/' . $achivement['id_prestasi']) ?>">Yakin</a>
                 </div>
             </div>
         </div>
