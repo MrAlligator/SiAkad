@@ -151,7 +151,13 @@ $route['ubah-pengumuman/(:any)'] = function ($slug_konten) {
 };
 
 //Guru
-$route['guru/nilai'] = 'guru/nilai';
+$route['guru/nilai'] = 'backend/guru/nilai';
 
 //Guru Input
-$route['guru/input-nilai'] = 'guru/nilai/input';
+$route['guru/input-nilai'] = 'backend/guru/nilai/input';
+
+//Karyawan
+$route['karyawan/pendaftaran'] = 'backend/pendaftaran';
+
+//Karyawan Input
+$route['karyawan/input-siswa-baru'] = 'backend/pendaftaran/create';

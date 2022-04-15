@@ -80,6 +80,7 @@
                 <span>Jadwal Pembelajaran</span>
             </a>
         </li>
+
     <?php elseif ($user['status_user'] == 2) : ?>
         <!-- Divider -->
         <hr class="sidebar-divider mt-3">
@@ -95,6 +96,24 @@
             <a class="nav-link pb-0" href="<?= base_url('administrator/data-pakar') ?>">
                 <i class="fas fa-fw fa-user-md"></i>
                 <span>Input Nilai</span>
+            </a>
+        </li>
+
+    <?php elseif ($user['status_user'] == 3) : ?>
+        <!-- Divider -->
+        <hr class="sidebar-divider mt-3">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Karyawan
+        </div>
+
+        <li class="nav-item <?php if ($is_active == 'pdf') {
+                                echo 'active';
+                            } ?>">
+            <a class="nav-link pb-0" href="<?= base_url('karyawan/pendaftaran') ?>">
+                <i class="fas fa-fw fa-user-md"></i>
+                <span>Pendaftaran Siswa Baru</span>
             </a>
         </li>
     <?php endif; ?>

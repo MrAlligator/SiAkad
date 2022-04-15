@@ -32,7 +32,9 @@
                             <th>Kelas</th>
                             <th>Diupload Oleh</th>
                             <th>Diupload Pada</th>
-                            <th>Action</th>
+                            <?php if ($user['status_user'] == 2 || $user['status_user'] == 1) : ?>
+                                <th>Action</th>
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,9 +47,11 @@
                                     <td><?= $theory['kelas'] ?></td>
                                     <td><?= $theory['uploaded_by'] ?></td>
                                     <td><?= date('d M Y', $theory['uploaded_at']) ?></td>
-                                    <td class="text-center">
-                                        <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $theory['id_materi'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
-                                    </td>
+                                    <?php if ($user['status_user'] == 2 || $user['status_user'] == 1) : ?>
+                                        <td class="text-center">
+                                            <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $theory['id_materi'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                                        </td>
+                                    <?php endif; ?>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>

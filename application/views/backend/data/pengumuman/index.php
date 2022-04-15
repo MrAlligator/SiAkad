@@ -45,8 +45,10 @@
                                     <td><?= date('d M Y', $announcement['uploaded_at']) ?></td>
                                     <td>
                                         <a href="<?= base_url('lihat-pengumuman/' . $announcement['slug_konten']) ?>" class="badge badge-primary"><i class="fas fa-fw fa-info-circle"></i></a>
-                                        <a href="<?= base_url('ubah-pengumuman/' . $announcement['slug_konten']) ?>" class="badge badge-warning"><i class="fas fa-fw fa-edit"></i></a>
-                                        <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $announcement['id_konten'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                                        <?php if ($user['status_user'] == 1) : ?>
+                                            <a href="<?= base_url('ubah-pengumuman/' . $announcement['slug_konten']) ?>" class="badge badge-warning"><i class="fas fa-fw fa-edit"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $announcement['id_konten'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

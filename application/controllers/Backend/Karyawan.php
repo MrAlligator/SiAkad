@@ -23,7 +23,7 @@ class Karyawan extends CI_Controller
         $this->load->view('backend/_partials/head', $data);
         $this->load->view('backend/_partials/sidebar', $data);
         $this->load->view('backend/_partials/topbar', $data);
-        $this->load->view('backend/data/karyawan/index');
+        $this->load->view('backend/data/karyawan/index', $data);
         $this->load->view('backend/_partials/foot', $data);
     }
 
