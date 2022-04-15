@@ -72,15 +72,6 @@
             </a>
         </li>
 
-        <li class="nav-item <?php if ($is_active == 'usr') {
-                                echo 'active';
-                            } ?>">
-            <a class="nav-link pb-0" href="<?= base_url('administrator/data-user') ?>">
-                <i class="fas fa-fw fa-user"></i>
-                <span>Data User</span>
-            </a>
-        </li>
-
         <li class="nav-item <?php if ($is_active == 'sbr') {
                                 echo 'active';
                             } ?>">
@@ -96,6 +87,23 @@
             <a class="nav-link pb-0" href="<?= base_url('administrator/data-user') ?>">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Jadwal Pembelajaran</span>
+            </a>
+        </li>
+    <?php elseif ($user['status_user'] == 2) : ?>
+        <!-- Divider -->
+        <hr class="sidebar-divider mt-3">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Guru
+        </div>
+
+        <li class="nav-item <?php if ($is_active == 'inl') {
+                                echo 'active';
+                            } ?>">
+            <a class="nav-link pb-0" href="<?= base_url('administrator/data-pakar') ?>">
+                <i class="fas fa-fw fa-user-md"></i>
+                <span>Input Nilai</span>
             </a>
         </li>
     <?php endif; ?>
@@ -169,15 +177,6 @@
         <a class="nav-link pb-0" href="<?= base_url('data-prestasi') ?>">
             <i class="fas fa-fw fa-folder"></i>
             <span>Prestasi</span>
-        </a>
-    </li>
-
-    <li class="nav-item <?php if ($is_active == 'wks') {
-                            echo 'active';
-                        } ?>">
-        <a class="nav-link pb-0" href="<?= base_url('data-walikelas') ?>">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Wali Kelas</span>
         </a>
     </li>
 
