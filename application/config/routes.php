@@ -106,3 +106,9 @@ $route['ubah-guru/(:num)'] = function ($id_guru) {
 $route['ubah-karyawan/(:num)'] = function ($id_guru) {
     return 'backend/karyawan/update' . '/' . $id_guru;
 };
+
+//Guru
+$route['guru/nilai'] = 'guru/nilai';
+
+//Guru Input
+$route['guru/input-nilai'] = 'guru/nilai/input';
