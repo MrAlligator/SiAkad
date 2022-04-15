@@ -14,7 +14,9 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="<?= base_url('tambah-guru') ?>">Tambah Baru</a>
+                    <?php if ($user['status_user'] == 1) : ?>
+                        <a class="dropdown-item" href="<?= base_url('tambah-guru') ?>">Tambah Baru</a>
+                    <?php endif; ?>
                     <a class="dropdown-item" href="<?= base_url('truncate-artikel') ?>">Kosongkan Tabel</a>
                 </div>
             </div>
@@ -47,10 +49,12 @@
                                     <td><?= $teacher['tmptlahir'] . ', ' . date('d M Y', $teacher['tgllahir']) ?></td>
                                     <td><?= $teacher['alamat_guru'] ?></td>
                                     <td><?= $teacher['telp_guru'] ?></td>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="#" data-toggle="modal" data-target="#detailModal-<?= $teacher['id_guru'] ?>" class="badge badge-primary"><i class="fas fa-fw fa-info-circle"></i></a>
-                                        <a href="<?= base_url('ubah-guru/' . $teacher['id_guru']) ?>" class="badge badge-warning"><i class="fas fa-fw fa-edit"></i></a>
-                                        <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $teacher['id_guru'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                                        <?php if ($user['status_user'] == 1) : ?>
+                                            <a href="<?= base_url('ubah-guru/' . $teacher['id_guru']) ?>" class="badge badge-warning"><i class="fas fa-fw fa-edit"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $teacher['id_guru'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Apr 2022 pada 10.33
+-- Waktu pembuatan: 15 Apr 2022 pada 07.51
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.0.15
 
@@ -33,22 +33,23 @@ CREATE TABLE `tb_guru` (
   `nama_guru` varchar(20) NOT NULL,
   `jk_guru` varchar(12) NOT NULL,
   `tmptlahir` varchar(25) NOT NULL,
-  `tgllahir` date NOT NULL,
+  `tgllahir` varchar(128) NOT NULL,
   `agama_guru` varchar(12) NOT NULL,
   `alamat_guru` text NOT NULL,
   `telp_guru` varchar(12) NOT NULL,
-  `status` varchar(12) NOT NULL,
-  `username` varchar(128) NOT NULL,
-  `password` varchar(12) NOT NULL
+  `image_guru` varchar(128) NOT NULL DEFAULT 'default.png',
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tb_guru`
 --
 
-INSERT INTO `tb_guru` (`id_guru`, `nip`, `nama_guru`, `jk_guru`, `tmptlahir`, `tgllahir`, `agama_guru`, `alamat_guru`, `telp_guru`, `status`, `username`, `password`) VALUES
-(4, '123456789', 'Mila Marda Fatmawati', 'Perempuan', 'Bondowoso', '2000-03-02', 'Islam', 'Sukosari', '081234156112', 'guru', '123456789', '1234567890'),
-(6, '082727377', 'Rizki', 'Laki - Laki', 'Banyuwangi', '1998-06-30', 'Islam', 'Prunggahan Kulon', '082331067312', 'karyawan', '0827273772', '0827273772');
+INSERT INTO `tb_guru` (`id_guru`, `nip`, `nama_guru`, `jk_guru`, `tmptlahir`, `tgllahir`, `agama_guru`, `alamat_guru`, `telp_guru`, `image_guru`, `status`) VALUES
+(6, '082727377', 'Rizki', 'Laki - Laki', 'Banyuwangi', '899157600', 'Islam', 'Prunggahan Kulon', '082331067312', 'default.png', 3),
+(7, '082667734', 'Febrero Araya Kusuma', 'Laki - Laki', 'Banyuwangi', '917996400', 'Kristen', 'Banyuwangi', '082234156617', '60a6bc348a442705ae92118194a6ceee.png', 2),
+(8, '57647184', 'Suprapto Adhi', 'Laki - Laki', 'Bondowoso', '560818800', 'Islam', 'Tangsil Wetan', '082334156617', '01f0f7f16e26c1fb5bc85268232deb76.png', 2),
+(9, '8863992', 'Titik Rosanti', 'Perempuan', 'Nganjuk', '940111200', 'Islam', 'Madiun', '08235166182', '517b1f8cee129272ba2cda1553e38db6.png', 3);
 
 --
 -- Indexes for dumped tables
@@ -68,7 +69,7 @@ ALTER TABLE `tb_guru`
 -- AUTO_INCREMENT untuk tabel `tb_guru`
 --
 ALTER TABLE `tb_guru`
-  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

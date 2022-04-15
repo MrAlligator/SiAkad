@@ -83,6 +83,7 @@ $route['data-materi'] = 'backend/materi';
 $route['tambah-siswa'] = 'backend/siswa/create';
 $route['tambah-guru'] = 'backend/guru/create';
 $route['tambah-karyawan'] = 'backend/karyawan/create';
+$route['tambah-galeri'] = 'backend/galeri/create';
 
 //Admin Delete
 $route['hapus-siswa/(:num)'] = function ($id_siswa) {

@@ -37,8 +37,8 @@ class Guru_model extends CI_Model
 
     public function get_latest_id_user()
     {
-        $this->db->select('user_id');
-        $this->db->order_by('user_id', 'desc');
+        $this->db->select('id_guru');
+        $this->db->order_by('id_guru', 'desc');
         $this->db->limit(1);
         return $this->db->get($this->_table)->row_array();
     }

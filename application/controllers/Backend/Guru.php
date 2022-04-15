@@ -34,6 +34,7 @@ class Guru extends CI_Controller
         $data['title'] = "Tambah Data Guru | SIAKAD SMK DARUSSALAM";
         $data['pageTitle'] = 'Tambah Data Guru';
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
+        $last_id = $this->guru_model->get_latest_id_user();
 
         $this->form_validation->set_rules('fname', 'Nama Depan', 'required|trim', [
             'required' => 'Nama Depan tidak boleh kosong!'
@@ -105,6 +106,7 @@ class Guru extends CI_Controller
                         'image_guru' => $image
                     ];
                     $dataLogin = [
+                        'id_konek' => $last_id + 1,
                         'username_user' => $this->input->post('nip'),
                         'password_user' => password_hash($this->input->post('nip'), PASSWORD_DEFAULT),
                         'viewpassword_user' => $this->input->post('nip'),

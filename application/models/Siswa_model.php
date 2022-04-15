@@ -14,6 +14,14 @@ class Siswa_model extends CI_Model
         return $this->db->where($where)->get($this->_table)->row_array();
     }
 
+    public function get_latest_id_user()
+    {
+        $this->db->select('id_siswa');
+        $this->db->order_by('id_siswa', 'desc');
+        $this->db->limit(1);
+        return $this->db->get($this->_table)->row_array();
+    }
+
     public function count()
     {
         $query = $this->db->get($this->_table);

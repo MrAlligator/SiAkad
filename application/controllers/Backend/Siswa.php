@@ -36,6 +36,7 @@ class Siswa extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
         $data['students'] = $this->siswa_model->getAll();
         $data['count'] = $this->siswa_model->count();
+        $last_id = $this->siswa_model->get_latest_id_user();
 
         $this->form_validation->set_rules('fname', 'Nama Depan', 'required|trim', [
             'required' => 'Nama Depan tidak boleh kosong!'
@@ -107,6 +108,7 @@ class Siswa extends CI_Controller
                         'image_siswa' => $image
                     ];
                     $dataLogin = [
+                        'id_konek' => $last_id + 1,
                         'username_user' => $this->input->post('nis'),
                         'password_user' => password_hash($this->input->post('nis'), PASSWORD_DEFAULT),
                         'viewpassword_user' => $this->input->post('nis'),
