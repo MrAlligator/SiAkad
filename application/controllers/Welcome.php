@@ -21,10 +21,72 @@ class Welcome extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('frontend/_partials/head');
+		$data['title'] = "beranda";
+		$this->load->view('frontend/_partials/head', $data);
 		$this->load->view('frontend/_partials/header');
 		$this->load->view('frontend/_partials/homebanner');
 		$this->load->view('frontend/home/index');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+
+	public function sambutan()
+	{
+		$data['title'] = "sambutan kepala sekolah";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/sambutan');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function sejarah()
+	{
+		$data['title'] = "sejarah";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/sejarah');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function profilSingkat()
+	{
+		$data['title'] = "profil wingkat";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/profilSingkat');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function visiMisi()
+	{
+		$data['title'] = "Visi dan Misi";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/visiMisi');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function struktur()
+	{
+		$data['title'] = "struktur";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/struktur');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function multimedia()
+	{
+		$data['title'] = "multimedia";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/multimedia');
 		$this->load->view('frontend/_partials/footer');
 		$this->load->view('frontend/_partials/js');
 	}

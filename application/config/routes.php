@@ -56,12 +56,27 @@ $route['translate_uri_dashes'] = FALSE;
 //Login
 $route['login'] = 'frontend/login';
 
-//Frontend
+/* Frontend */
+//Data Guru
 $route['guru'] = 'frontend/guru';
+$route['detail-guru/(:any)'] = function ($id_siswa) {
+    return 'frontend/siswa/detail/' . $id_siswa;
+};
+
+//Data Siswa
 $route['siswa'] = 'frontend/siswa';
 $route['detail-siswa/(:any)'] = function ($id_siswa) {
     return 'frontend/siswa/detail/' . $id_siswa;
 };
+//Profil Sekolah
+$route['sambutan'] = 'welcome/sambutan';
+$route['sejarah'] = 'welcome/sejarah';
+$route['profil-singkat'] = 'welcome/profilSingkat';
+$route['visi-misi'] = 'welcome/visiMisi';
+$route['struktur'] = 'welcome/struktur';
+
+//Admin
+$route['jurusan-multimedia'] = 'welcome/multimedia';
 
 /* Backend */
 //Admin
