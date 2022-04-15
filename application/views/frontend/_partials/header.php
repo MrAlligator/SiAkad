@@ -51,11 +51,11 @@
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="sambutan.php">Sambutan</a></li>
-                                <li class="nav-item"><a class="nav-link" href="sejarah.php">Sejarah</a></li>
-                                <li class="nav-item"><a class="nav-link" href="profilsingkat.php">Profil Singkat</a></li>
-                                <li class="nav-item"><a class="nav-link" href="visimisi.php">Visi dan Misi</a></li>
-                                <li class="nav-item"><a class="nav-link" href="struktur.php">Struktur</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('sambutan') ?>">Sambutan</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('sejarah') ?>">Sejarah</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('profil-singkat') ?>">Profil Singkat</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('visi-misi') ?>">Visi dan Misi</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('struktur') ?>">Struktur</a></li>
                             </ul>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data</a>
@@ -70,7 +70,7 @@
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jurusan</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="multimedia.php">Multimedia</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('multimedia') ?>">Multimedia</a></li>
                             </ul>
                         </li>
                         <li class="nav-item submenu dropdown">
