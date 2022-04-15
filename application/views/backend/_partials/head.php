@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('admin/assets/images/default-image/title.png') ?>" />
-
+    <link rel="icon" href="<?= base_url('assets/') ?>img/logosmk.png" type="image/png">
     <title><?= $title ?></title>
 
     <!-- Custom fonts for this template-->

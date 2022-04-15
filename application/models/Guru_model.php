@@ -35,6 +35,26 @@ class Guru_model extends CI_Model
         }
     }
 
+    public function countG()
+    {
+        $query = $this->db->where('status', 2)->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function countK()
+    {
+        $query = $this->db->where('status', 3)->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
     public function get_latest_id_user()
     {
         $this->db->select('id_guru');

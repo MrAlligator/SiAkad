@@ -1,10 +1,10 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
         <div class="sidebar-brand-icon">
-            <i class="fas fa-solid fa-school"></i>
+            <i><img src="<?= base_url('assets/') ?>img/logosmk.png" width="50" alt=""></i>
         </div>
         <div class="sidebar-brand-text mx-3">SMK <sup>DARUSSALAM</sup></div>
     </a>

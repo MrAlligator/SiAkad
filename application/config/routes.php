@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 //Login
 $route['login'] = 'frontend/login';
+$route['logout'] = 'frontend/login/logout';
 
 /* Frontend */
 //Data Guru
@@ -93,6 +94,12 @@ $route['data-galeri'] = 'backend/galeri';
 $route['data-prestasi'] = 'backend/prestasi';
 $route['data-walikelas'] = 'backend/walikelas';
 $route['data-materi'] = 'backend/materi';
+$route['lihat-berita/(:any)'] = function ($slug_konten) {
+    return 'backend/berita/read' . '/' . $slug_konten;
+};
+$route['lihat-pengumuman/(:any)'] = function ($slug_konten) {
+    return 'backend/pengumuman/read' . '/' . $slug_konten;
+};
 
 //Admin Create
 $route['tambah-siswa'] = 'backend/siswa/create';
@@ -100,6 +107,8 @@ $route['tambah-guru'] = 'backend/guru/create';
 $route['tambah-karyawan'] = 'backend/karyawan/create';
 $route['tambah-galeri'] = 'backend/galeri/create';
 $route['tambah-prestasi'] = 'backend/prestasi/create';
+$route['tambah-berita'] = 'backend/berita/create';
+$route['tambah-pengumuman'] = 'backend/pengumuman/create';
 
 //Admin Delete
 $route['hapus-siswa/(:num)'] = function ($id_siswa) {
@@ -117,6 +126,12 @@ $route['hapus-galeri/(:num)'] = function ($id_media) {
 $route['hapus-prestasi/(:num)'] = function ($id_prestasi) {
     return 'backend/prestasi/delete' . '/' . $id_prestasi;
 };
+$route['hapus-berita/(:num)'] = function ($id_konten) {
+    return 'backend/berita/delete' . '/' . $id_konten;
+};
+$route['hapus-pengumuman/(:num)'] = function ($id_konten) {
+    return 'backend/pengumuman/delete' . '/' . $id_konten;
+};
 
 //Admin Update
 $route['ubah-siswa/(:num)'] = function ($id_siswa) {
@@ -127,6 +142,12 @@ $route['ubah-guru/(:num)'] = function ($id_guru) {
 };
 $route['ubah-karyawan/(:num)'] = function ($id_guru) {
     return 'backend/karyawan/update' . '/' . $id_guru;
+};
+$route['ubah-berita/(:any)'] = function ($slug_konten) {
+    return 'backend/berita/update' . '/' . $slug_konten;
+};
+$route['ubah-pengumuman/(:any)'] = function ($slug_konten) {
+    return 'backend/pengumuman/update' . '/' . $slug_konten;
 };
 
 //Guru
