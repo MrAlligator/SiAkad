@@ -6,60 +6,46 @@
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary"><?= $pageTitle ?></h6>
         </div>
-        <form action="<?= base_url('ubah-siswa/' . $studentdata['id_siswa']) ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('ubah-karyawan/' . $employeedata['id_guru']) ?>" method="post" enctype="multipart/form-data">
             <div class="card-body">
                 <div class="form-group row">
                     <div class="col mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" name="nis" id="nis" value="<?= $studentdata['nis'] ?>" readonly placeholder="Nomor Induk Siswa"><?= form_error('nis', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="text" class="form-control form-control-user" name="nip" id="nip" value="<?= $employeedata['nip'] ?>" readonly placeholder="Nomor Induk Pegawai"><?= form_error('nip', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" name="fname" id="fname" placeholder="Nama Depan" value="<?= $studentdata['nama_siswa'] ?>"><?= form_error('fname', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="text" class="form-control form-control-user" name="fname" id="fname" placeholder="Nama Depan" value="<?= $employeedata['nama_guru'] ?>"><?= form_error('fname', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col mb-3 mb-sm-0">
                         <select class="form-control" name="jk" id="jk" required>
                             <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                            <option value="Laki - Laki" <?php if ($studentdata['jk_siswa'] == 'Laki - Laki') {
+                            <option value="Laki - Laki" <?php if ($employeedata['jk_guru'] == 'Laki - Laki') {
                                                             echo 'selected';
                                                         } ?>>Laki - Laki</option>
-                            <option value="Perempuan" <?php if ($studentdata['jk_siswa'] == 'Perempuan') {
+                            <option value="Perempuan" <?php if ($employeedata['jk_guru'] == 'Perempuan') {
                                                             echo 'selected';
                                                         } ?>>Perempuan</option>
                         </select>
                     </div>
                     <div class="col mb-3 mb-sm-0">
-                        <select class="form-control" name="kelas" id="kelas" required>
-                            <option value="" selected disabled>Pilih Kelas</option>
-                            <option value="X" <?php if ($studentdata['kelas'] == 'X') {
-                                                    echo 'selected';
-                                                } ?>>X</option>
-                            <option value="XI" <?php if ($studentdata['kelas'] == 'XI') {
-                                                    echo 'selected';
-                                                } ?>>XI</option>
-                            <option value="XII" <?php if ($studentdata['kelas'] == 'XII') {
-                                                    echo 'selected';
-                                                } ?>>XII</option>
-                        </select>
-                    </div>
-                    <div class="col mb-3 mb-sm-0">
                         <select class="form-control" name="agama" id="agama" required>
                             <option value="" selected disabled>Pilih Agama</option>
-                            <option value="Islam" <?php if ($studentdata['agama_siswa'] == 'Islam') {
+                            <option value="Islam" <?php if ($employeedata['agama_guru'] == 'Islam') {
                                                         echo 'selected';
                                                     } ?>>Islam</option>
-                            <option value="Kristen" <?php if ($studentdata['agama_siswa'] == 'Kristen') {
+                            <option value="Kristen" <?php if ($employeedata['agama_guru'] == 'Kristen') {
                                                         echo 'selected';
                                                     } ?>>Kristen</option>
-                            <option value="Hindu" <?php if ($studentdata['agama_siswa'] == 'Hindu') {
+                            <option value="Hindu" <?php if ($employeedata['agama_guru'] == 'Hindu') {
                                                         echo 'selected';
                                                     } ?>>Hindu</option>
-                            <option value="Budha" <?php if ($studentdata['agama_siswa'] == 'Budha') {
+                            <option value="Budha" <?php if ($employeedata['agama_guru'] == 'Budha') {
                                                         echo 'selected';
                                                     } ?>>Budha</option>
-                            <option value="Katolik" <?php if ($studentdata['agama_siswa'] == 'Katolik') {
+                            <option value="Katolik" <?php if ($employeedata['agama_guru'] == 'Katolik') {
                                                         echo 'selected';
                                                     } ?>>Katolik</option>
                         </select>
@@ -67,25 +53,25 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" name="tempatlhr" id="tempatlhr" placeholder="Tempat Lahir" value="<?= $studentdata['tmptlhr_siswa'] ?>"><?= form_error('tempatlhr', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="text" class="form-control form-control-user" name="tempatlhr" id="tempatlhr" placeholder="Tempat Lahir" value="<?= $employeedata['tmptlahir'] ?>"><?= form_error('tempatlhr', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                     <div class="col-sm-6">
-                        <input type="date" class="form-control form-control-user" name="tanggallhr" id="tanggallhr" placeholder="Tanggal Lahir" value="<?= date('Y-m-d', $studentdata['tgllhr_siswa']) ?>"><?= form_error('tanggallhr', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="date" class="form-control form-control-user" name="tanggallhr" id="tanggallhr" placeholder="Tanggal Lahir" value="<?= date('Y-m-d', $employeedata['tgllahir']) ?>"><?= form_error('tanggallhr', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" class="form-control form-control-user" name="alamat" id="alamat" placeholder="Alamat" value="<?= $studentdata['alamat_siswa'] ?>"><?= form_error('alamat', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="text" class="form-control form-control-user" name="alamat" id="alamat" placeholder="Alamat" value="<?= $employeedata['alamat_guru'] ?>"><?= form_error('alamat', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" class="form-control form-control-user" name="telp" id="telp" placeholder="No. Telepon" value="<?= $studentdata['telp_siswa'] ?>"><?= form_error('telp', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="text" class="form-control form-control-user" name="telp" id="telp" placeholder="No. Telepon" value="<?= $employeedata['telp_guru'] ?>"><?= form_error('telp', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <img src="<?= base_url('assets/img/siswa/' . $studentdata['image_siswa']) ?>" width="300" height="300" id="image-prev" class="img-thumbnails" alt="">
+                        <img src="<?= base_url('assets/img/guru/' . $employeedata['image_guru']) ?>" width="300" height="300" id="image-prev" class="img-thumbnails" alt="">
                         <p></p>
                         <label for="image">Gambar</label>
                         <input type="file" accept="image/*" class="form-control form-control-user" name="image" id="image" onchange="previewFile(this);">

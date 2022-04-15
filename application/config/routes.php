@@ -77,16 +77,31 @@ $route['data-absensi'] = 'backend/absensi';
 $route['data-galeri'] = 'backend/galeri';
 $route['data-prestasi'] = 'backend/prestasi';
 $route['data-walikelas'] = 'backend/walikelas';
+$route['data-materi'] = 'backend/materi';
 
 //Admin Create
 $route['tambah-siswa'] = 'backend/siswa/create';
+$route['tambah-guru'] = 'backend/guru/create';
+$route['tambah-karyawan'] = 'backend/karyawan/create';
 
 //Admin Delete
 $route['hapus-siswa/(:num)'] = function ($id_siswa) {
     return 'backend/siswa/delete' . '/' . $id_siswa;
 };
+$route['hapus-guru/(:num)'] = function ($id_guru) {
+    return 'backend/guru/delete' . '/' . $id_guru;
+};
+$route['hapus-karyawan/(:num)'] = function ($id_guru) {
+    return 'backend/karyawan/delete' . '/' . $id_guru;
+};
 
 //Admin Update
 $route['ubah-siswa/(:num)'] = function ($id_siswa) {
     return 'backend/siswa/update' . '/' . $id_siswa;
+};
+$route['ubah-guru/(:num)'] = function ($id_guru) {
+    return 'backend/guru/update' . '/' . $id_guru;
+};
+$route['ubah-karyawan/(:num)'] = function ($id_guru) {
+    return 'backend/karyawan/update' . '/' . $id_guru;
 };

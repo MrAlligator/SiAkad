@@ -14,7 +14,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="<?= base_url('tambah-siswa') ?>">Tambah Baru</a>
+                    <a class="dropdown-item" href="<?= base_url('tambah-karyawan') ?>">Tambah Baru</a>
                     <a class="dropdown-item" href="<?= base_url('truncate-artikel') ?>">Kosongkan Tabel</a>
                 </div>
             </div>
@@ -25,9 +25,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>NIS</th>
+                            <th>NIP</th>
                             <th>Nama</th>
-                            <th>Kelas</th>
                             <th>Jenis Kelamin</th>
                             <th>Agama</th>
                             <th>TTL</th>
@@ -38,21 +37,20 @@
                     </thead>
                     <tbody>
                         <?php if ($count > 0) : ?>
-                            <?php foreach ($students as $student) : ?>
+                            <?php foreach ($employees as $employee) : ?>
                                 <tr>
                                     <td><?= ++$start ?></td>
-                                    <td><?= $student['nis'] ?></td>
-                                    <td><?= $student['nama_siswa'] ?></td>
-                                    <td><?= $student['kelas'] ?></td>
-                                    <td><?= $student['jk_siswa'] ?></td>
-                                    <td><?= $student['agama_siswa'] ?></td>
-                                    <td><?= $student['tmptlhr_siswa'] . ', ' . date('d, M Y', $student['tgllhr_siswa']) ?></td>
-                                    <td><?= $student['alamat_siswa'] ?></td>
-                                    <td><?= $student['telp_siswa'] ?></td>
+                                    <td><?= $employee['nip'] ?></td>
+                                    <td><?= $employee['nama_guru'] ?></td>
+                                    <td><?= $employee['jk_guru'] ?></td>
+                                    <td><?= $employee['agama_guru'] ?></td>
+                                    <td><?= $employee['tmptlahir'] . ', ' . date('d M Y', $employee['tgllahir']) ?></td>
+                                    <td><?= $employee['alamat_guru'] ?></td>
+                                    <td><?= $employee['telp_guru'] ?></td>
                                     <td>
-                                        <a href="#" data-toggle="modal" data-target="#detailModal-<?= $student['id_siswa'] ?>" class="badge badge-primary"><i class="fas fa-fw fa-info-circle"></i></a>
-                                        <a href="<?= base_url('ubah-siswa/' . $student['id_siswa']) ?>" class="badge badge-warning"><i class="fas fa-fw fa-edit"></i></a>
-                                        <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $student['id_siswa'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#detailModal-<?= $employee['id_guru'] ?>" class="badge badge-primary"><i class="fas fa-fw fa-info-circle"></i></a>
+                                        <a href="<?= base_url('ubah-karyawan/' . $employee['id_guru']) ?>" class="badge badge-warning"><i class="fas fa-fw fa-edit"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $employee['id_guru'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -73,8 +71,8 @@
 <!-- End of Main Content -->
 
 <!-- Delete Modal-->
-<?php foreach ($students as $student) : ?>
-    <div class="modal fade" id="deleteModal-<?= $student['id_siswa'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php foreach ($employees as $employee) : ?>
+    <div class="modal fade" id="deleteModal-<?= $employee['id_guru'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -86,7 +84,7 @@
                 <div class="modal-body">Data yang Dihapus tidak bisa dikembalikan</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?= base_url('hapus-siswa/' . $student['id_siswa']) ?>">Yakin</a>
+                    <a class="btn btn-primary" href="<?= base_url('hapus-karyawan/' . $employee['id_guru']) ?>">Yakin</a>
                 </div>
             </div>
         </div>
@@ -94,12 +92,12 @@
 <?php endforeach; ?>
 
 <!-- Detail Modal-->
-<?php foreach ($students as $student) : ?>
-    <div class="modal fade" id="detailModal-<?= $student['id_siswa'] ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+<?php foreach ($employees as $employee) : ?>
+    <div class="modal fade" id="detailModal-<?= $employee['id_guru'] ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="detailModalLabel">Detail Siswa</h5>
+                    <h5 class="modal-title" id="detailModalLabel">Detail Guru</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -107,57 +105,51 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="<?= base_url('assets/img/siswa/' . $student['image_siswa']) ?>" height="200" width="200" alt="">
+                            <img src="<?= base_url('assets/img/guru/' . $employee['image_guru']) ?>" height="200" width="200" alt="">
                         </div>
                         <div class="col-md-6">
                             <table>
                                 <tr>
-                                    <td>Nomor Induk Siswa</td>
+                                    <td>Nomor Induk Pegawai</td>
                                     <td>&nbsp;</td>
                                     <td>:</td>
-                                    <td><?= $student['nis'] ?></td>
+                                    <td><?= $employee['nip'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Nama</td>
                                     <td>&nbsp;</td>
                                     <td>:</td>
-                                    <td><?= $student['nama_siswa'] ?></td>
+                                    <td><?= $employee['nama_guru'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Tempat, Tanggal Lahir</td>
                                     <td>&nbsp;</td>
                                     <td>:</td>
-                                    <td><?= $student['tmptlhr_siswa'] . ', ' . date('d, M Y', $student['tgllhr_siswa']) ?></td>
+                                    <td><?= $employee['tmptlahir'] . ', ' . date('d M Y', $employee['tgllahir']) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Jenis Kelamin</td>
                                     <td>&nbsp;</td>
                                     <td>:</td>
-                                    <td><?= $student['jk_siswa'] ?></td>
+                                    <td><?= $employee['jk_guru'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Agama</td>
                                     <td>&nbsp;</td>
                                     <td>:</td>
-                                    <td><?= $student['agama_siswa'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Kelas</td>
-                                    <td>&nbsp;</td>
-                                    <td>:</td>
-                                    <td><?= $student['kelas'] ?></td>
+                                    <td><?= $employee['agama_guru'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
                                     <td>&nbsp;</td>
                                     <td>:</td>
-                                    <td><?= $student['alamat_siswa'] ?></td>
+                                    <td><?= $employee['alamat_guru'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>No. Telepon</td>
                                     <td>&nbsp;</td>
                                     <td>:</td>
-                                    <td><?= $student['telp_siswa'] ?></td>
+                                    <td><?= $employee['telp_guru'] ?></td>
                                 </tr>
                             </table>
                         </div>

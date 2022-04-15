@@ -114,7 +114,7 @@ class Siswa extends CI_Controller
                     ];
                     $this->siswa_model->inputData($dataSiswa);
                     $this->users_model->inputData($dataLogin);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pakar berhasil ditambahkan</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Siswa berhasil ditambahkan</div>');
                     redirect('data-siswa');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gambar Gagal di upload</div>');
@@ -194,7 +194,7 @@ class Siswa extends CI_Controller
                     $image = $gbr['file_name']; //nama file yang terupload dan sudah dienkripsi
                     $dataSiswa = [
                         'nis' => htmlspecialchars($this->input->post('nis')),
-                        'nama_siswa' => htmlspecialchars($this->input->post('fname') . ' ' . $this->input->post('lname')),
+                        'nama_siswa' => htmlspecialchars($this->input->post('fname')),
                         'kelas' => htmlspecialchars($this->input->post('kelas')),
                         'jk_siswa' => htmlspecialchars($this->input->post('jk')),
                         'agama_siswa' => htmlspecialchars($this->input->post('agama')),
@@ -204,23 +204,28 @@ class Siswa extends CI_Controller
                         'telp_siswa' => htmlspecialchars($this->input->post('telp')),
                         'image_siswa' => $image
                     ];
-                    $dataLogin = [
-                        'username_user' => $this->input->post('nis'),
-                        'password_user' => password_hash($this->input->post('nis'), PASSWORD_DEFAULT),
-                        'viewpassword_user' => $this->input->post('nis'),
-                        'status_user' => 5
-                    ];
-                    $this->siswa_model->inputData($dataSiswa);
-                    $this->users_model->inputData($dataLogin);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pakar berhasil ditambahkan</div>');
+                    $this->siswa_model->updateData($where, $dataSiswa);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Siswa berhasil diubah</div>');
                     redirect('data-siswa');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gambar Gagal di upload</div>');
                     redirect('tambah-siswa');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Perhatikan gambar yang diupload</div>');
-                redirect('tambah-siswa');
+                $dataSiswa = [
+                    'nis' => htmlspecialchars($this->input->post('nis')),
+                    'nama_siswa' => htmlspecialchars($this->input->post('fname')),
+                    'kelas' => htmlspecialchars($this->input->post('kelas')),
+                    'jk_siswa' => htmlspecialchars($this->input->post('jk')),
+                    'agama_siswa' => htmlspecialchars($this->input->post('agama')),
+                    'tmptlhr_siswa' => htmlspecialchars($this->input->post('tempatlhr')),
+                    'tgllhr_siswa' => strtotime($this->input->post('tanggallhr')),
+                    'alamat_siswa' => htmlspecialchars($this->input->post('alamat')),
+                    'telp_siswa' => htmlspecialchars($this->input->post('telp')),
+                ];
+                $this->siswa_model->updateData($where, $dataSiswa);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Siswa berhasil diubah</div>');
+                redirect('data-siswa');
             }
         }
     }

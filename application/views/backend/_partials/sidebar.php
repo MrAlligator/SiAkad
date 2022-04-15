@@ -3,10 +3,10 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-bug"></i>
+        <div class="sidebar-brand-icon">
+            <i class="fas fa-solid fa-school"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Expert <sup>DF</sup></div>
+        <div class="sidebar-brand-text mx-3">SMK <sup>DARUSSALAM</sup></div>
     </a>
 
     <!-- Divider -->
@@ -133,6 +133,15 @@
         <a class="nav-link pb-0" href="<?= base_url('data-karyawan') ?>">
             <i class="fas fa-fw fa-file-medical-alt"></i>
             <span>Karyawan</span>
+        </a>
+    </li>
+
+    <li class="nav-item <?php if ($is_active == 'mtr') {
+                            echo 'active';
+                        } ?>">
+        <a class="nav-link pb-0" href="<?= base_url('data-materi') ?>">
+            <i class="fas fa-fw fa-file-medical-alt"></i>
+            <span>Materi</span>
         </a>
     </li>
 

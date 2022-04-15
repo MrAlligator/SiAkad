@@ -42,4 +42,9 @@ class Siswa_model extends CI_Model
     {
         return $this->db->get_where($this->_table, $id)->row_array();
     }
+
+    public function updateData($id, $data)
+    {
+        return $this->db->where($id)->update($this->_table, $data);
+    }
 }
