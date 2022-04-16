@@ -75,7 +75,7 @@
         <li class="nav-item <?php if ($is_active == 'jwl') {
                                 echo 'active';
                             } ?>">
-            <a class="nav-link pb-0" href="<?= base_url('administrator/data-user') ?>">
+            <a class="nav-link pb-0" href="<?= base_url('administrator/data-jadwal-pembelajaran') ?>">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Jadwal Pembelajaran</span>
             </a>

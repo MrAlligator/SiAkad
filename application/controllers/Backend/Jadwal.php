@@ -9,6 +9,11 @@ class Jadwal extends CI_Controller
         $this->load->model('jurusan_model');
         $this->load->model('pengajar_model');
         $this->load->model('nilai_model');
+        $this->load->model('mapel_model');
+        $this->load->model('kelas_model');
+        $this->load->model('jurusan_model');
+        $this->load->model('guru_model');
+        $this->load->model('jadwal_model');
     }
 
     public function index()
@@ -27,55 +32,69 @@ class Jadwal extends CI_Controller
         $this->load->view('backend/data/jadwal/index', $data);
         $this->load->view('backend/_partials/foot', $data);
     }
-    public function cari()
-    {
-        $where = [
-            'id_kelas' => $this->input->post('kelas'),
-            'id_jurusan' => $this->input->post('jurusan'),
-            'nip' => $this->session->userdata('username')
-        ];
-        $cari = $this->pengajar_model->cari($where);
-        if (!isset($cari['id_pengajar'])) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda tidak mengajar kelas tersebut</div>');
-            redirect(base_url('nilai'));
-        } else {
-            redirect(base_url('guru/data-nilai/' . $cari['id_pengajar']));
-        }
-    }
-    public function data_nilai($id)
-    {
-        $where = [
-            'id_pengajar' => $id
-        ];
-        $cari = $this->pengajar_model->cari($where);
 
-        $id_kelas = $cari['id_kelas'];
-        $data['kelas'] = $this->db->where(['id_kelas' => $id_kelas])->get('tb_kelas')->row_array();
-        $id_jurusan = $cari['id_jurusan'];
-        $data['jurusan'] = $this->db->where(['id_jurusan' => $id_jurusan])->get('tb_jurusan')->row_array();
-        $kode_mapel = $cari['kode_mapel'];
-        $data['mapel'] = $this->db->where(['kode_mapel' => $kode_mapel])->get('tb_mapel')->row_array();
-        $nip = $cari['nip'];
-        $data['nip'] = $this->db->where(['nip' => $nip])->get('tb_guru')->row_array();
-
+    public function index_admin()
+    {
         $data['start'] = 0;
-        $data['is_active'] = 'mtr';
-        $data['title'] = "Materi | SIAKAD SMK DARUSSALAM";
-        $data['pageTitle'] = 'Data Nilai';
+        $data['is_active'] = 'jwl';
+        $data['title'] = "Jadwal Pembelajaran | SIAKAD SMK DARUSSALAM";
+        $data['pageTitle'] = 'Jadwal Pembelajaran';
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
-
-        $where = [
-            'a.id_kelas' => $id_kelas,
-            'a.id_jurusan' => $id_jurusan,
-            'a.nip' => $nip
-        ];
-
-        $data['data'] = $this->nilai_model->getAll($where);
+        $data['schedules'] = $this->jadwal_model->getAll();
+        $data['count'] = $this->jadwal_model->count();
 
         $this->load->view('backend/_partials/head', $data);
         $this->load->view('backend/_partials/sidebar', $data);
         $this->load->view('backend/_partials/topbar', $data);
-        $this->load->view('backend/data/nilai/data_nilai', $data);
+        $this->load->view('backend/data/jadwal/index_admin', $data);
         $this->load->view('backend/_partials/foot', $data);
+    }
+
+    public function create()
+    {
+        $data['start'] = 0;
+        $data['is_active'] = 'jwl';
+        $data['title'] = "Tambah Jadwal Pembelajaran | SIAKAD SMK DARUSSALAM";
+        $data['pageTitle'] = 'Tambah Jadwal Pembelajaran';
+        $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
+        $data['teachers'] = $this->guru_model->getGuru();
+        $data['classes'] = $this->kelas_model->getAll();
+        $data['subjects'] = $this->mapel_model->getAll();
+        $data['majors'] = $this->jurusan_model->getAll();
+
+        $this->form_validation->set_rules('kelas', 'Kelas', 'required|trim', [
+            'required' => 'Kelas tidak boleh kosong!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('backend/_partials/head', $data);
+            $this->load->view('backend/_partials/sidebar', $data);
+            $this->load->view('backend/_partials/topbar', $data);
+            $this->load->view('backend/data/jadwal/add', $data);
+            $this->load->view('backend/_partials/foot', $data);
+        } else {
+            $data = [
+                'kode_mapel' => $this->input->post('mapel'),
+                'id_kelas' => $this->input->post('kelas'),
+                'id_jurusan' => $this->input->post('jurusan'),
+                'nip' => $this->input->post('pengajar'),
+                'jam' => $this->input->post('jam'),
+                'hari' => $this->input->post('hari')
+            ];
+            $this->jadwal_model->inputData($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
+            redirect('administrator/data-jadwal-pembelajaran');
+        }
+    }
+
+
+    public function delete($id_jadwal)
+    {
+        $where = array('id_jadwal' => $id_jadwal);
+
+        //Execution
+        $this->jadwal_model->deleteData($where);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus</div>');
+        redirect('administrator/data-jadwal-pembelajaran');
     }
 }

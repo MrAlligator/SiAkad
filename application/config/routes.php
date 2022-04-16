@@ -85,6 +85,7 @@ $route['dashboard'] = 'backend/home';
 
 //Admin Read
 $route['administrator/data-calon-siswa-baru'] = 'backend/pendaftaran/calon';
+$route['administrator/data-jadwal-pembelajaran'] = 'backend/jadwal/index_admin';
 $route['data-berita'] = 'backend/berita';
 $route['data-pengumuman'] = 'backend/pengumuman';
 $route['data-siswa'] = 'backend/siswa';
@@ -116,6 +117,7 @@ $route['tambah-pengumuman'] = 'backend/pengumuman/create';
 $route['tambah-mapel'] = 'backend/mapel/create';
 $route['tambah-jurusan'] = 'backend/jurusan/create';
 $route['tambah-pengajar'] = 'backend/pengajar/create';
+$route['administrator/tambah-jadwal-pembelajaran'] = 'backend/jadwal/create';
 
 //Admin Delete
 $route['hapus-siswa/(:num)'] = function ($id_siswa) {
@@ -147,6 +149,9 @@ $route['hapus-jurusan/(:num)'] = function ($id_jurusan) {
 };
 $route['hapus-pengajar/(:num)'] = function ($id_pengajar) {
     return 'backend/pengajar/delete' . '/' . $id_pengajar;
+};
+$route['administrator/hapus-jadwal-pembelajaran/(:num)'] = function ($id_jadwal) {
+    return 'backend/jadwal/delete' . '/' . $id_jadwal;
 };
 
 //Admin Update
