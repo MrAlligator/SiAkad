@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Apr 2022 pada 07.51
+-- Waktu pembuatan: 16 Apr 2022 pada 18.21
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.0.15
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `tb_materi` (
   `id_materi` int(11) NOT NULL,
   `judul_materi` varchar(128) NOT NULL,
-  `mapel` varchar(128) NOT NULL,
+  `kode_mapel` varchar(128) NOT NULL,
   `file_name` varchar(128) NOT NULL,
-  `kelas` varchar(128) NOT NULL,
+  `id_kelas` int(11) NOT NULL,
   `uploaded_by` int(11) NOT NULL,
   `uploaded_at` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -41,8 +41,8 @@ CREATE TABLE `tb_materi` (
 -- Dumping data untuk tabel `tb_materi`
 --
 
-INSERT INTO `tb_materi` (`id_materi`, `judul_materi`, `mapel`, `file_name`, `kelas`, `uploaded_by`, `uploaded_at`) VALUES
-(1, 'Matematika Untuk kelas X', 'Matematika', 'matematika.pdf', 'X', 21, '2563671888');
+INSERT INTO `tb_materi` (`id_materi`, `judul_materi`, `kode_mapel`, `file_name`, `id_kelas`, `uploaded_by`, `uploaded_at`) VALUES
+(1, 'Matematika Untuk kelas X', 'Matematika', 'matematika.pdf', 0, 21, '2563671888');
 
 --
 -- Indexes for dumped tables
