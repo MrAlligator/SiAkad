@@ -93,7 +93,7 @@
         <li class="nav-item <?php if ($is_active == 'inl') {
                                 echo 'active';
                             } ?>">
-            <a class="nav-link pb-0" href="<?= base_url('administrator/data-pakar') ?>">
+            <a class="nav-link pb-0" href="<?= base_url('nilai') ?>">
                 <i class="fas fa-fw fa-user-md"></i>
                 <span>Input Nilai</span>
             </a>

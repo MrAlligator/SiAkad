@@ -18,7 +18,12 @@
                     </a>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-8 header-top-right">
-                    <a href="<?= base_url('login') ?>" class="text-uppercase">Masuk</a>
+                    <?php if (isset($_SESSION['username'])) { ?>
+                        <a href="<?= base_url('dashboard') ?>" class="text-uppercase">menu lainnya</a>
+                        <a href="<?= base_url('logout') ?>" class="text-uppercase">keluar</a>
+                    <?php } else { ?>
+                        <a href="<?= base_url('login') ?>" class="text-uppercase">Masuk</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
