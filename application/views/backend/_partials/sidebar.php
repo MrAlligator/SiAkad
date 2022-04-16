@@ -217,6 +217,15 @@
         </a>
     </li>
 
+    <li class="nav-item <?php if ($is_active == 'pgj') {
+                            echo 'active';
+                        } ?>">
+        <a class="nav-link pb-0" href="<?= base_url('data-pengajar') ?>">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Pengajar</span>
+        </a>
+    </li>
+
 
 
     <!-- Divider -->

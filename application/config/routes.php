@@ -98,6 +98,7 @@ $route['data-walikelas'] = 'backend/walikelas';
 $route['data-materi'] = 'backend/materi';
 $route['data-mapel'] = 'backend/mapel';
 $route['data-jurusan'] = 'backend/jurusan';
+$route['data-pengajar'] = 'backend/pengajar';
 $route['lihat-berita/(:any)'] = function ($slug_konten) {
     return 'backend/berita/read' . '/' . $slug_konten;
 };
@@ -115,6 +116,7 @@ $route['tambah-berita'] = 'backend/berita/create';
 $route['tambah-pengumuman'] = 'backend/pengumuman/create';
 $route['tambah-mapel'] = 'backend/mapel/create';
 $route['tambah-jurusan'] = 'backend/jurusan/create';
+$route['tambah-pengajar'] = 'backend/pengajar/create';
 
 //Admin Delete
 $route['hapus-siswa/(:num)'] = function ($id_siswa) {
@@ -143,6 +145,9 @@ $route['hapus-mapel/(:num)'] = function ($id_mapel) {
 };
 $route['hapus-jurusan/(:num)'] = function ($id_jurusan) {
     return 'backend/jurusan/delete' . '/' . $id_jurusan;
+};
+$route['hapus-pengajar/(:num)'] = function ($id_pengajar) {
+    return 'backend/pengajar/delete' . '/' . $id_pengajar;
 };
 
 //Admin Update
