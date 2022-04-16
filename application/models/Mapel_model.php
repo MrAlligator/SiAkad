@@ -1,9 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Jurusan_model extends CI_Model
+class Mapel_model extends CI_Model
 {
-    private $_table = "tb_jurusan";
+    private $_table = "tb_mapel";
+
     public function getAll()
     {
         return $this->db->get($this->_table)->result_array();

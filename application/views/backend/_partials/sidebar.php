@@ -199,6 +199,24 @@
         </a>
     </li>
 
+    <li class="nav-item <?php if ($is_active == 'jrs') {
+                            echo 'active';
+                        } ?>">
+        <a class="nav-link pb-0" href="<?= base_url('data-jurusan') ?>">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Jurusan</span>
+        </a>
+    </li>
+
+    <li class="nav-item <?php if ($is_active == 'mpl') {
+                            echo 'active';
+                        } ?>">
+        <a class="nav-link pb-0" href="<?= base_url('data-mapel') ?>">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Mapel</span>
+        </a>
+    </li>
+
 
 
     <!-- Divider -->

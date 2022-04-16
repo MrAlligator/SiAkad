@@ -96,6 +96,8 @@ $route['data-galeri'] = 'backend/galeri';
 $route['data-prestasi'] = 'backend/prestasi';
 $route['data-walikelas'] = 'backend/walikelas';
 $route['data-materi'] = 'backend/materi';
+$route['data-mapel'] = 'backend/mapel';
+$route['data-jurusan'] = 'backedn/jurusan';
 $route['lihat-berita/(:any)'] = function ($slug_konten) {
     return 'backend/berita/read' . '/' . $slug_konten;
 };
