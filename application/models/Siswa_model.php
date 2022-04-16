@@ -7,6 +7,15 @@ class Siswa_model extends CI_Model
 
     public function getAll()
     {
+        $this->db->select(
+            'a.id_siswa, a.nis, a.nama_siswa, a.foto_siswa, a.id_kelas, a.id_jurusan, a.jk_siswa, a.agama_siswa,
+            a.tmptlhr_siswa, a.tgllhr_siswa, a.alamat_siswa, a.telp_siswa, a.image_siswa, b.id_kelas, b.kelas, c.id_jurusan, c.jurusan'
+        );
+        $this->db->from('tb_siswa a');
+        $this->db->join('tb_kelas b', 'a.id_kelas = b.id_kelas');
+        $this->db->join('tb_jurusan c', 'a.id_jurusan = c.id_jurusan');
+        $this->db->group_by('a.id_siswa');
+        $this->db->order_by('a.id_siswa', 'DESC');
         return $this->db->get($this->_table)->result_array();
     }
 

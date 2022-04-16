@@ -30,11 +30,6 @@
                             <th>NIS</th>
                             <th>Nama</th>
                             <th>Kelas</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Agama</th>
-                            <th>TTL</th>
-                            <th>Alamat</th>
-                            <th>No. Telp</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -46,11 +41,6 @@
                                     <td><?= $student['nis'] ?></td>
                                     <td><?= $student['nama_siswa'] ?></td>
                                     <td><?= $student['kelas'] ?></td>
-                                    <td><?= $student['jk_siswa'] ?></td>
-                                    <td><?= $student['agama_siswa'] ?></td>
-                                    <td><?= $student['tmptlhr_siswa'] . ', ' . date('d, M Y', $student['tgllhr_siswa']) ?></td>
-                                    <td><?= $student['alamat_siswa'] ?></td>
-                                    <td><?= $student['telp_siswa'] ?></td>
                                     <td class="text-center">
                                         <a href="#" data-toggle="modal" data-target="#detailModal-<?= $student['id_siswa'] ?>" class="badge badge-primary"><i class="fas fa-fw fa-info-circle"></i></a>
                                         <?php if ($user['status_user'] == 1) : ?>
@@ -113,7 +103,7 @@
                         <div class="col-md-4">
                             <img src="<?= base_url('assets/img/siswa/' . $student['image_siswa']) ?>" height="200" width="200" alt="">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <table>
                                 <tr>
                                     <td>Nomor Induk Siswa</td>
@@ -149,7 +139,7 @@
                                     <td>Kelas</td>
                                     <td>&nbsp;</td>
                                     <td>:</td>
-                                    <td><?= $student['kelas'] ?></td>
+                                    <td><?= $student['kelas'] . ' ' . $student['jurusan'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
