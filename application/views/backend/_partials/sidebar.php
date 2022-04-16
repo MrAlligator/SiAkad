@@ -66,7 +66,7 @@
         <li class="nav-item <?php if ($is_active == 'sbr') {
                                 echo 'active';
                             } ?>">
-            <a class="nav-link pb-0" href="<?= base_url('administrator/data-user') ?>">
+            <a class="nav-link pb-0" href="<?= base_url('administrator/data-calon-siswa-baru') ?>">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Siswa Baru</span>
             </a>
@@ -114,6 +114,15 @@
             <a class="nav-link pb-0" href="<?= base_url('karyawan/pendaftaran') ?>">
                 <i class="fas fa-fw fa-user-md"></i>
                 <span>Pendaftaran Siswa Baru</span>
+            </a>
+        </li>
+
+        <li class="nav-item <?php if ($is_active == 'ver') {
+                                echo 'active';
+                            } ?>">
+            <a class="nav-link pb-0" href="<?= base_url('karyawan/verifikasi') ?>">
+                <i class="fas fa-fw fa-user-md"></i>
+                <span>Verifikasi Berkas</span>
             </a>
         </li>
     <?php endif; ?>

@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <div class="row">
         <div class="col-md-3">
-            <a href="<?= base_url('karyawan/input-siswa-baru') ?>" class="btn btn-primary">Input Data Pendaftar</a>
+            <a href="<?= base_url('karyawan/input-calon-siswa-baru') ?>" class="btn btn-primary">Input Data Pendaftar</a>
         </div>
     </div>
 
@@ -21,15 +21,36 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Judul</th>
-                            <th>Mata Pelajaran</th>
-                            <th>Kelas</th>
-                            <th>Diupload Oleh</th>
-                            <th>Diupload Pada</th>
+                            <th>No. Pendaftaran</th>
+                            <th>Nama Pendaftar</th>
+                            <th>Asal SMP</th>
+                            <th>Foto Pendaftar</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-
+                        <?php if ($count > 0) : ?>
+                            <?php foreach ($registrants as $registrant) : ?>
+                                <tr>
+                                    <td><?= ++$start ?></td>
+                                    <td><?= $registrant['no_pendaftaran'] ?></td>
+                                    <td><?= $registrant['nama_pendaftar'] ?></td>
+                                    <td><?= $registrant['asal_smp'] ?></td>
+                                    <td><img src="<?= base_url('assets/img/pendaftar/' . $registrant['image_pendaftar']) ?>" width="100" height="100" alt=""></td>
+                                    <td class="text-center">
+                                        <?php if ($registrant['verified_berkas_pendaftar'] == 0) : ?>
+                                            <a href="#" data-toggle="modal" data-target="#deleteModal-<?= $registrant['id_pendaftaran'] ?>" class=" badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                                        <?php else : ?>
+                                            <div class="badge badge-success">Sudah diverifikasi</div>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <tr>
+                                <h4 class="text-danger text-center">Belum ada Data yang di Input</h4>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -42,8 +63,8 @@
 <!-- End of Main Content -->
 
 <!-- Delete Modal-->
-<!-- <?php foreach ($theories as $theory) : ?>
-    <div class="modal fade" id="deleteModal-<?= $theory['id_materi'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php foreach ($registrants as $registrant) : ?>
+    <div class="modal fade" id="deleteModal-<?= $registrant['id_pendaftaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -55,9 +76,9 @@
                 <div class="modal-body">Data yang Dihapus tidak bisa dikembalikan</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?= base_url('hapus-materi/' . $theory['id_materi']) ?>">Yakin</a>
+                    <a class="btn btn-primary" href="<?= base_url('karyawan/hapus-calon-siswa-baru/' . $registrant['id_pendaftaran']) ?>">Yakin</a>
                 </div>
             </div>
         </div>
     </div>
-<?php endforeach; ?> -->
+<?php endforeach; ?>

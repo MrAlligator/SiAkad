@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Politeknik Negeri Jember - Kampus Bondowoso <?= date('Y') ?></span>
+            <span>Copyright &copy; SMK Darussalam Bondowos <?= date('Y') ?></span>
         </div>
     </div>
 </footer>
