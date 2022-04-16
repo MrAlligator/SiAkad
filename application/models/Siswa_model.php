@@ -9,6 +9,7 @@ class Siswa_model extends CI_Model
     {
         return $this->db->get($this->_table)->result_array();
     }
+
     public function getByNIS($where)
     {
         return $this->db->where($where)->get($this->_table)->row_array();

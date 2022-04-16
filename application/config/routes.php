@@ -84,6 +84,7 @@ $route['jurusan-multimedia'] = 'welcome/multimedia';
 $route['dashboard'] = 'backend/home';
 
 //Admin Read
+$route['administrator/data-calon-siswa-baru'] = 'backend/pendaftaran/calon';
 $route['nilai'] = 'backend/nilai';
 $route['data-berita'] = 'backend/berita';
 $route['data-pengumuman'] = 'backend/pengumuman';
@@ -163,6 +164,17 @@ $route['guru/input-nilai'] = 'backend/nilai/input';
 
 //Karyawan
 $route['karyawan/pendaftaran'] = 'backend/pendaftaran';
+$route['karyawan/verifikasi'] = 'backend/pendaftaran/verify';
 
 //Karyawan Input
-$route['karyawan/input-siswa-baru'] = 'backend/pendaftaran/create';
+$route['karyawan/input-calon-siswa-baru'] = 'backend/pendaftaran/create';
+
+//Karyawan Delete
+$route['karyawan/hapus-calon-siswa-baru/(:num)'] = function ($id_pendaftaran) {
+    return 'backend/pendaftaran/delete' . '/' . $id_pendaftaran;
+};
+
+//Karyawan Update
+$route['karyawan/verified/(:num)'] = function ($id_pendaftaran) {
+    return 'backend/pendaftaran/confirmVerify' . '/' . $id_pendaftaran;
+};

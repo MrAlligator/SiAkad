@@ -6,7 +6,7 @@
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary"><?= $pageTitle ?></h6>
         </div>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="<?= base_url('karyawan/input-calon-siswa-baru') ?>" method="POST" enctype="multipart/form-data">
             <div class="card-body">
                 <div class="form-group row">
                     <div class="col-md-4 mb-3 mb-sm-0">
