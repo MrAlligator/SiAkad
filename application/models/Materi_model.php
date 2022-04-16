@@ -5,7 +5,11 @@ class Materi_model extends CI_Model
 {
     private $_table = "tb_materi";
 
-    public function getAll()
+    public function getAll($where)
+    {
+        return $this->db->where($where)->get($this->_table)->result_array();
+    }
+    public function getAllAdmin()
     {
         $this->db->select(
             'a.id_materi, a.judul_materi, a.kode_mapel, a.file_name, a.id_kelas,
@@ -18,6 +22,10 @@ class Materi_model extends CI_Model
         $this->db->group_by('a.id_materi');
         $this->db->order_by('a.id_materi', 'DESC');
         return $this->db->get($this->_table)->result_array();
+    }
+    public function inputData($data)
+    {
+        return $this->db->insert($this->_table, $data);
     }
 
     public function count()

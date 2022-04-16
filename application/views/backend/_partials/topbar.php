@@ -40,7 +40,13 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $user['username_user'] ?></span>
+                                <?php if ($_SESSION['level'] == 2) {
+                                    $nip = $user['username_user'];
+                                    $guru = $this->db->where(['nip' => $nip])->get('tb_guru')->row_array(); ?>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $guru['nama_guru'] ?></span>
+                                <?php } else { ?>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $user['username_user'] ?></span>
+                                <?php } ?>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -13,11 +13,12 @@
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Dropdown Header:</div>
+                    <div class="dropdown-header">Pilihan :</div>
                     <?php if ($user['status_user'] == 2) : ?>
                         <a class="dropdown-item" href="<?= base_url('tambah-materi') ?>">Tambah Baru</a>
-                    <?php endif; ?>
-                    <a class="dropdown-item" href="<?= base_url('truncate-artikel') ?>">Kosongkan Tabel</a>
+                    <?php else : ?>
+                        <a class="dropdown-item" href="<?= base_url('truncate-artikel') ?>">Kosongkan Tabel</a>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -30,6 +31,7 @@
                             <th>Judul</th>
                             <th>Mata Pelajaran</th>
                             <th>Kelas</th>
+                            <th>Jurusan</th>
                             <th>Diupload Oleh</th>
                             <th>Diupload Pada</th>
                             <?php if ($user['status_user'] == 2 || $user['status_user'] == 1) : ?>
@@ -39,13 +41,23 @@
                     </thead>
                     <tbody>
                         <?php if ($count > 0) : ?>
-                            <?php foreach ($theories as $theory) : ?>
+                            <?php foreach ($theories as $theory) :
+                                $id_kelas = $theory['id_kelas'];
+                                $kelas = $this->db->where(['id_kelas' => $id_kelas])->get('tb_kelas')->row_array();
+                                $id_jurusan = $theory['id_jurusan'];
+                                $jurusan = $this->db->where(['id_jurusan' => $id_jurusan])->get('tb_jurusan')->row_array();
+                                $kode_mapel = $theory['kode_mapel'];
+                                $mapel = $this->db->where(['kode_mapel' => $kode_mapel])->get('tb_mapel')->row_array();
+                                $nip = $theory['uploaded_by'];
+                                $guru = $this->db->where(['nip' => $nip])->get('tb_guru')->row_array();
+                            ?>
                                 <tr>
                                     <td><?= ++$start ?></td>
                                     <td><?= $theory['judul_materi'] ?></td>
-                                    <td><?= $theory['mapel'] ?></td>
-                                    <td><?= $theory['kelas'] ?></td>
-                                    <td><?= $theory['uploaded_by'] ?></td>
+                                    <td><?= $mapel['nama_mapel'] ?></td>
+                                    <td><?= $kelas['kelas'] ?></td>
+                                    <td><?= $jurusan['jurusan'] ?></td>
+                                    <td><?= $guru['nama_guru'] ?></td>
                                     <td><?= date('d M Y', $theory['uploaded_at']) ?></td>
                                     <?php if ($user['status_user'] == 2 || $user['status_user'] == 1) : ?>
                                         <td class="text-center">

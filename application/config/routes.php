@@ -174,6 +174,7 @@ $route['ubah-pengumuman/(:any)'] = function ($slug_konten) {
 //Guru
 $route['guru/nilai'] = 'backend/nilai';
 $route['guru/jadwal'] = 'backend/jadwal';
+$route['guru/materi'] = 'backend/materi';
 
 //Guru Input
 $route['guru/cari-nilai'] = 'backend/nilai/cari';
@@ -181,6 +182,7 @@ $route['guru/data-nilai/(:num)'] = function ($id) {
     return 'backend/nilai/data_nilai/' . $id;
 };
 $route['guru/input-nilai'] = 'backend/nilai/input';
+$route['tambah-materi'] = 'backend/materi/create';
 
 //Karyawan
 $route['karyawan/pendaftaran'] = 'backend/pendaftaran';
