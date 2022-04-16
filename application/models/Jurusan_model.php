@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Jurusan_model extends CI_Model
 {
     private $_table = "tb_jurusan";
+
     public function getAll()
     {
         return $this->db->get($this->_table)->result_array();
@@ -17,5 +18,15 @@ class Jurusan_model extends CI_Model
         } else {
             return 0;
         }
+    }
+
+    public function inputData($data)
+    {
+        return $this->db->insert($this->_table, $data);
+    }
+
+    public function deleteData($id)
+    {
+        return $this->db->where($id)->delete($this->_table);
     }
 }
