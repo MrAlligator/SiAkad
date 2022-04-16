@@ -85,7 +85,6 @@ $route['dashboard'] = 'backend/home';
 
 //Admin Read
 $route['administrator/data-calon-siswa-baru'] = 'backend/pendaftaran/calon';
-$route['nilai'] = 'backend/nilai';
 $route['data-berita'] = 'backend/berita';
 $route['data-pengumuman'] = 'backend/pengumuman';
 $route['data-siswa'] = 'backend/siswa';
@@ -168,7 +167,8 @@ $route['ubah-pengumuman/(:any)'] = function ($slug_konten) {
 };
 
 //Guru
-$route['guru/nilai'] = 'backend/guru/nilai';
+$route['guru/nilai'] = 'backend/nilai';
+$route['guru/jadwal'] = 'backend/jadwal';
 
 //Guru Input
 $route['guru/cari-nilai'] = 'backend/nilai/cari';

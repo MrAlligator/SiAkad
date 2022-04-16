@@ -6,7 +6,7 @@ class Nilai_model extends CI_Model
     private $_table = "tb_nilai";
 
     // siswa, guru, jurusan, kelas, mapel
-    public function getAll()
+    public function getAll($where)
     {
         $this->db->select(
             'a.id_nilai, a.nis, a.id_kelas, a.id_jurusan, a.kode_mapel, a.nip, a.nilai_uh_1, a.nilai_uh_2,
@@ -22,6 +22,6 @@ class Nilai_model extends CI_Model
         $this->db->join('tb_mapel f', 'a.kode_mapel = f.kode_mapel');
         $this->db->group_by('a.id_nilai');
         $this->db->order_by('a.id_nilai', 'DESC');
-        return $this->db->get($this->_table)->result_array();
+        return $this->db->where($where)->get($this->_table)->result_array();
     }
 }

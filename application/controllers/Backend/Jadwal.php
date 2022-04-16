@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Nilai extends CI_Controller
+class Jadwal extends CI_Controller
 {
     public function __construct()
     {
@@ -16,7 +16,7 @@ class Nilai extends CI_Controller
         $data['start'] = 0;
         $data['is_active'] = 'mtr';
         $data['title'] = "Materi | SIAKAD SMK DARUSSALAM";
-        $data['pageTitle'] = 'Data Materi';
+        $data['pageTitle'] = 'Jadwal KBM';
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
         $data['jurusan'] = $this->jurusan_model->getAll();
         $data['kelas'] = $this->db->get('tb_kelas')->result_array();
@@ -24,7 +24,7 @@ class Nilai extends CI_Controller
         $this->load->view('backend/_partials/head', $data);
         $this->load->view('backend/_partials/sidebar', $data);
         $this->load->view('backend/_partials/topbar', $data);
-        $this->load->view('backend/data/nilai/index', $data);
+        $this->load->view('backend/data/jadwal/index', $data);
         $this->load->view('backend/_partials/foot', $data);
     }
     public function cari()

@@ -11,19 +11,19 @@
                 <table>
                     <tr>
                         <th>Kelas</th>
-                        <th>: X</th>
+                        <th>: <?= $kelas['kelas'] ?></th>
                     </tr>
                     <tr>
                         <th>Jurusan</th>
-                        <th>: Multimedia</th>
+                        <th>: <?= $jurusan['jurusan'] ?></th>
                     </tr>
                     <tr>
                         <th>Mata Pelajaran</th>
-                        <th>: Matematika</th>
+                        <th>: <?= $mapel['nama_mapel'] ?></th>
                     </tr>
                     <tr>
                         <th>Pengajar</th>
-                        <th>: Mila Marda Fatmawati</th>
+                        <th>: <?= $nip['nama_guru'] ?></th>
                     </tr>
                 </table>
             </h6>
@@ -50,7 +50,7 @@
                             <th colspan="4">Nilai Ulangan Harian</th>
                             <th rowspan="2">UTS</th>
                             <th rowspan="2">UAS</th>
-                            <th rowspan="2">Nilai Sikap</th>
+                            <th rowspan="2">Sikap</th>
                             <th rowspan="2">Action</th>
                         </tr>
                         <tr>
@@ -61,7 +61,20 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        <?php foreach ($data as $data) { ?>
+                            <tr>
+                                <th><?= strtoupper($data['nis']) ?></th>
+                                <th><?= $data['nama_siswa'] ?></th>
+                                <th class="text-center"><?= $data['nilai_uh_1'] ?></th>
+                                <th class="text-center"><?= $data['nilai_uh_2'] ?></th>
+                                <th class="text-center"><?= $data['nilai_uh_3'] ?></th>
+                                <th class="text-center"><?= $data['nilai_uh_4'] ?></th>
+                                <th class="text-center"><?= $data['nilai_uts'] ?></th>
+                                <th class="text-center"><?= $data['nilai_uas'] ?></th>
+                                <th class="text-center"><?= $data['nilai_sikap'] ?></th>
+                                <th></th>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
