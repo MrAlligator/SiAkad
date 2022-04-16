@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2022 at 09:24 AM
+-- Generation Time: Apr 16, 2022 at 03:56 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_smk`
+-- Database: `db_newsmk`
 --
 
 -- --------------------------------------------------------
@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_jadwal` (
   `id_jadwal` int(11) NOT NULL,
-  `nama_mapel` varchar(20) NOT NULL,
-  `semester` varchar(12) NOT NULL,
-  `nama_guru` varchar(20) NOT NULL,
-  `durasi` time NOT NULL,
+  `kode_mapel` varchar(20) NOT NULL,
+  `id_kelas` int(11) NOT NULL,
+  `id_jurusan` int(11) NOT NULL,
+  `nip` varchar(128) NOT NULL,
+  `jam` varchar(128) NOT NULL,
   `hari` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,8 +41,9 @@ CREATE TABLE `tb_jadwal` (
 -- Dumping data for table `tb_jadwal`
 --
 
-INSERT INTO `tb_jadwal` (`id_jadwal`, `nama_mapel`, `semester`, `nama_guru`, `durasi`, `hari`) VALUES
-(1, 'Matematika', '1', 'Mila Marda Fatmawati', '00:00:07', 'Senin');
+INSERT INTO `tb_jadwal` (`id_jadwal`, `kode_mapel`, `id_kelas`, `id_jurusan`, `nip`, `jam`, `hari`) VALUES
+(1, 'M001', 1, 1, '57647184', '07:00 - 07:45', 'Senin'),
+(2, 'M001', 1, 1, '57647184', '07:45 - 08:30', 'Senin');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +63,7 @@ ALTER TABLE `tb_jadwal`
 -- AUTO_INCREMENT for table `tb_jadwal`
 --
 ALTER TABLE `tb_jadwal`
-  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
