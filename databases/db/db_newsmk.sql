@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Apr 2022 pada 11.47
+-- Waktu pembuatan: 17 Apr 2022 pada 09.27
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.0.15
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_guru` (
   `id_guru` int(11) NOT NULL,
-  `nip` varchar(9) NOT NULL,
+  `nip` varchar(128) NOT NULL,
   `nama_guru` varchar(20) NOT NULL,
   `jk_guru` varchar(12) NOT NULL,
   `tmptlahir` varchar(25) NOT NULL,
@@ -47,9 +47,33 @@ CREATE TABLE `tb_guru` (
 
 INSERT INTO `tb_guru` (`id_guru`, `nip`, `nama_guru`, `jk_guru`, `tmptlahir`, `tgllahir`, `agama_guru`, `alamat_guru`, `telp_guru`, `image_guru`, `status`) VALUES
 (6, '082727377', 'Rizki', 'Laki - Laki', 'Banyuwangi', '899157600', 'Islam', 'Prunggahan Kulon', '082331067312', 'default.png', 3),
-(7, '082667734', 'Febrero Araya Kusuma', 'Laki - Laki', 'Banyuwangi', '917996400', 'Kristen', 'Banyuwangi', '082234156617', '60a6bc348a442705ae92118194a6ceee.png', 2),
+(7, '0826677344', 'Febrero Araya Kusuma', 'Laki - Laki', 'Banyuwangi', '917996400', 'Kristen', 'Banyuwangi', '082234156617', '60a6bc348a442705ae92118194a6ceee.png', 2),
 (8, '57647184', 'Suprapto Adhi', 'Laki - Laki', 'Bondowoso', '560818800', 'Islam', 'Tangsil Wetan', '082334156617', '01f0f7f16e26c1fb5bc85268232deb76.png', 2),
 (9, '8863992', 'Titik Rosanti', 'Perempuan', 'Nganjuk', '940111200', 'Islam', 'Madiun', '08235166182', '517b1f8cee129272ba2cda1553e38db6.png', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_jadwal`
+--
+
+CREATE TABLE `tb_jadwal` (
+  `id_jadwal` int(11) NOT NULL,
+  `kode_mapel` varchar(20) NOT NULL,
+  `id_kelas` int(11) NOT NULL,
+  `id_jurusan` int(11) NOT NULL,
+  `nip` varchar(128) NOT NULL,
+  `jam` varchar(128) NOT NULL,
+  `hari` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_jadwal`
+--
+
+INSERT INTO `tb_jadwal` (`id_jadwal`, `kode_mapel`, `id_kelas`, `id_jurusan`, `nip`, `jam`, `hari`) VALUES
+(1, 'M001', 1, 1, '57647184', '07:00 - 07:45', 'Senin'),
+(3, 'M004', 2, 2, '082667734', '07:00 - 07-45', 'Selasa');
 
 -- --------------------------------------------------------
 
@@ -153,7 +177,7 @@ CREATE TABLE `tb_materi` (
   `judul_materi` varchar(128) NOT NULL,
   `kode_mapel` varchar(128) NOT NULL,
   `file_name` varchar(128) NOT NULL,
-  `kelas` varchar(128) NOT NULL,
+  `id_kelas` int(11) NOT NULL,
   `uploaded_by` int(11) NOT NULL,
   `uploaded_at` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -162,8 +186,8 @@ CREATE TABLE `tb_materi` (
 -- Dumping data untuk tabel `tb_materi`
 --
 
-INSERT INTO `tb_materi` (`id_materi`, `judul_materi`, `kode_mapel`, `file_name`, `kelas`, `uploaded_by`, `uploaded_at`) VALUES
-(1, 'Matematika Untuk kelas X', 'Matematika', 'matematika.pdf', 'X', 21, '2563671888');
+INSERT INTO `tb_materi` (`id_materi`, `judul_materi`, `kode_mapel`, `file_name`, `id_kelas`, `uploaded_by`, `uploaded_at`) VALUES
+(1, 'Matematika Untuk kelas X', 'Matematika', 'matematika.pdf', 0, 21, '2563671888');
 
 -- --------------------------------------------------------
 
@@ -228,7 +252,9 @@ CREATE TABLE `tb_pengajar` (
 --
 
 INSERT INTO `tb_pengajar` (`id_pengajar`, `kode_mapel`, `id_kelas`, `id_jurusan`, `nip`) VALUES
-(1, 'M001', 1, 1, '57647184');
+(1, 'M001', 1, 1, '57647184'),
+(2, 'M001', 2, 2, '082667734'),
+(3, 'M003', 2, 1, '082667734');
 
 -- --------------------------------------------------------
 
@@ -261,17 +287,29 @@ CREATE TABLE `tb_siswa` (
   `tmptlhr_siswa` text NOT NULL,
   `tgllhr_siswa` varchar(128) NOT NULL,
   `alamat_siswa` text NOT NULL,
-  `telp_siswa` text NOT NULL,
-  `image_siswa` varchar(128) NOT NULL
+  `telp_siswa` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tb_siswa`
 --
 
-INSERT INTO `tb_siswa` (`id_siswa`, `nis`, `nama_siswa`, `foto_siswa`, `id_kelas`, `id_jurusan`, `jk_siswa`, `agama_siswa`, `tmptlhr_siswa`, `tgllhr_siswa`, `alamat_siswa`, `telp_siswa`, `image_siswa`) VALUES
-(19, 'n112', 'Rizki', 'index.jpg', 1, 1, 'Perempuan', 'Islam', 'Banyuwangi', '1650099827', 'Sukosari', '082412531771', ''),
-(20, 'n113', 'Febrero Araya', 'index.jpg', 2, 1, 'Laki - Laki', 'Islam', 'Banyuwangi', '1650088761', 'Sukosari', '081234156112', '');
+INSERT INTO `tb_siswa` (`id_siswa`, `nis`, `nama_siswa`, `foto_siswa`, `id_kelas`, `id_jurusan`, `jk_siswa`, `agama_siswa`, `tmptlhr_siswa`, `tgllhr_siswa`, `alamat_siswa`, `telp_siswa`) VALUES
+(19, 'n112', 'Rizki', 'index.jpg', 1, 1, 'Perempuan', 'Islam', 'Banyuwangi', '1650099827', 'Sukosari', '082412531771'),
+(20, 'n113', 'Febrero Araya', 'index.jpg', 2, 1, 'Laki - Laki', 'Islam', 'Banyuwangi', '1650088761', 'Sukosari', '081234156112'),
+(21, '', '', 'safafs', 0, 0, '', '', '', '', '', ''),
+(22, '', 'safasf', 'asfafasfaf', 0, 0, '', '', '', '', '', ''),
+(23, '', 'asf', '', 0, 0, '', '', '', '', '', ''),
+(24, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
+(25, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
+(26, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
+(27, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
+(28, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
+(29, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
+(30, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
+(31, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
+(32, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
+(33, 'N2022015', 'Rendy Pratama', '3921c76b4cc9c3a8ed3ea1cca7c65b23.png', 1, 2, 'Laki - Laki', 'Islam', 'Bondowoso', '1108162800', 'Bondowoso', '082441552676');
 
 -- --------------------------------------------------------
 
@@ -294,11 +332,10 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id_user`, `id_konek`, `username_user`, `password_user`, `viewpassword_user`, `status_user`) VALUES
 (1, 0, 'admin', '$2y$10$GIZ9fhk1/9NWFIr2dVaU4.N35ox2LKfOjLwc7RrNf3obVYsSl/NXC', 'admin', 1),
-(3, 22, 'N115', '$2y$10$BLHCpGYi3WmezvP.0HciGuVUKAj9DCwb4gNwS.h4YcdKiMnNHHaKy', 'N115', 5),
-(4, 0, 'N172', '$2y$10$vsjvCVY8zGYy4A6t9gA2dekQcF5GA6BZV3fB98f1TwjPIFxWcgYZa', 'N172', 5),
-(5, 0, '0826677344', '$2y$10$jvPD1igWVReBhejXqo40i.V1lIYrXeCYcarShm2sWRIJ85BVbbHWS', '0826677344', 2),
-(6, 0, '57647184', '$2y$10$eIzDXuKDi2eG74.rkZDIkeVXkhxV/sUe9MTQ.fLS/.wv8P5AZM/8m', '57647184', 2),
-(7, 0, '8863992', '$2y$10$8u2OnfvPtKWjrGnmNZo/Lu0ZlYcBoJ26t.1RfoAHIifkW3jZrnG0i', '8863992', 3);
+(5, 7, '0826677344', '$2y$10$jvPD1igWVReBhejXqo40i.V1lIYrXeCYcarShm2sWRIJ85BVbbHWS', '0826677344', 2),
+(6, 8, '57647184', '$2y$10$eIzDXuKDi2eG74.rkZDIkeVXkhxV/sUe9MTQ.fLS/.wv8P5AZM/8m', '57647184', 2),
+(7, 9, '8863992', '$2y$10$8u2OnfvPtKWjrGnmNZo/Lu0ZlYcBoJ26t.1RfoAHIifkW3jZrnG0i', '8863992', 3),
+(8, 33, 'N2022015', 'N2022015', 'N2022015', 5);
 
 -- --------------------------------------------------------
 
@@ -317,17 +354,19 @@ CREATE TABLE `tmp_pendaftaran` (
   `agama_pendaftar` varchar(128) NOT NULL,
   `alamat_pendaftar` text NOT NULL,
   `telp_pendaftar` varchar(128) NOT NULL,
+  `pilihan_jurusan` int(11) NOT NULL,
   `image_pendaftar` varchar(128) NOT NULL,
-  `verified_berkas_pendaftar` int(11) NOT NULL
+  `verified_berkas_pendaftar` int(11) NOT NULL,
+  `lolos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tmp_pendaftaran`
 --
 
-INSERT INTO `tmp_pendaftaran` (`id_pendaftaran`, `no_pendaftaran`, `asal_smp`, `nama_pendaftar`, `tmptlhr_pendaftar`, `tgllhr_pendaftar`, `jk_pendaftar`, `agama_pendaftar`, `alamat_pendaftar`, `telp_pendaftar`, `image_pendaftar`, `verified_berkas_pendaftar`) VALUES
-(1, '1650063741', 'SMPN 5 Bondowoso', 'Marissa Aridya Pasha', 'Bondowoso', '100007366', 'Perempuan', 'Islam', 'Bondowoso', '081335267827', 'decb9187649184072300dc45bc84a805.png', 1),
-(2, '1650093266', 'SMPN 5 Bondowoso', 'Rendy Pratama', 'Bondowoso', '1108162800', 'Laki - Laki', 'Islam', 'Bondowoso', '082441552676', '3921c76b4cc9c3a8ed3ea1cca7c65b23.png', 1);
+INSERT INTO `tmp_pendaftaran` (`id_pendaftaran`, `no_pendaftaran`, `asal_smp`, `nama_pendaftar`, `tmptlhr_pendaftar`, `tgllhr_pendaftar`, `jk_pendaftar`, `agama_pendaftar`, `alamat_pendaftar`, `telp_pendaftar`, `pilihan_jurusan`, `image_pendaftar`, `verified_berkas_pendaftar`, `lolos`) VALUES
+(1, '1650063741', 'SMPN 5 Bondowoso', 'Marissa Aridya Pasha', 'Bondowoso', '100007366', 'Perempuan', 'Islam', 'Bondowoso', '081335267827', 1, 'decb9187649184072300dc45bc84a805.png', 1, 0),
+(2, '1650093266', 'SMPN 5 Bondowoso', 'Rendy Pratama', 'Bondowoso', '1108162800', 'Laki - Laki', 'Islam', 'Bondowoso', '082441552676', 2, '3921c76b4cc9c3a8ed3ea1cca7c65b23.png', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -338,6 +377,12 @@ INSERT INTO `tmp_pendaftaran` (`id_pendaftaran`, `no_pendaftaran`, `asal_smp`, `
 --
 ALTER TABLE `tb_guru`
   ADD PRIMARY KEY (`id_guru`);
+
+--
+-- Indeks untuk tabel `tb_jadwal`
+--
+ALTER TABLE `tb_jadwal`
+  ADD PRIMARY KEY (`id_jadwal`);
 
 --
 -- Indeks untuk tabel `tb_jurusan`
@@ -422,6 +467,12 @@ ALTER TABLE `tb_guru`
   MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_jadwal`
+--
+ALTER TABLE `tb_jadwal`
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_jurusan`
 --
 ALTER TABLE `tb_jurusan`
@@ -467,7 +518,7 @@ ALTER TABLE `tb_nilai`
 -- AUTO_INCREMENT untuk tabel `tb_pengajar`
 --
 ALTER TABLE `tb_pengajar`
-  MODIFY `id_pengajar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengajar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_prestasi`
@@ -479,13 +530,13 @@ ALTER TABLE `tb_prestasi`
 -- AUTO_INCREMENT untuk tabel `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tmp_pendaftaran`

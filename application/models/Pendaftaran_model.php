@@ -7,17 +7,44 @@ class Pendaftaran_model extends CI_Model
 
     public function getAll()
     {
+        $this->db->select(
+            'a.id_pendaftaran, a.no_pendaftaran, a.asal_smp, a.nama_pendaftar, a.tmptlhr_pendaftar,
+            a.tgllhr_pendaftar, a.jk_pendaftar, a.agama_pendaftar, a.alamat_pendaftar, a.telp_pendaftar,
+            a.pilihan_jurusan, a.image_pendaftar, a.verified_berkas_pendaftar, a.lolos, b.id_jurusan, b.jurusan'
+        );
+        $this->db->from('tmp_pendaftaran a');
+        $this->db->join('tb_jurusan b', 'a.pilihan_jurusan = b.id_jurusan');
+        $this->db->group_by('a.id_pendaftaran');
+        $this->db->order_by('a.id_pendaftaran', 'DESC');
         return $this->db->get($this->_table)->result_array();
     }
 
     public function getUnverified()
     {
-        return $this->db->where('verified_berkas_pendaftar', 0)->get($this->_table)->result_array();
+        $this->db->select(
+            'a.id_pendaftaran, a.no_pendaftaran, a.asal_smp, a.nama_pendaftar, a.tmptlhr_pendaftar,
+            a.tgllhr_pendaftar, a.jk_pendaftar, a.agama_pendaftar, a.alamat_pendaftar, a.telp_pendaftar,
+            a.pilihan_jurusan, a.image_pendaftar, a.verified_berkas_pendaftar, a.lolos, b.id_jurusan, b.jurusan'
+        );
+        $this->db->from('tmp_pendaftaran a');
+        $this->db->join('tb_jurusan b', 'a.pilihan_jurusan = b.id_jurusan');
+        $this->db->group_by('a.id_pendaftaran');
+        $this->db->order_by('a.id_pendaftaran', 'DESC');
+        return $this->db->where('a.verified_berkas_pendaftar', 0)->where('a.lolos', 0)->get($this->_table)->result_array();
     }
 
     public function getVerified()
     {
-        return $this->db->where('verified_berkas_pendaftar', 1)->get($this->_table)->result_array();
+        $this->db->select(
+            'a.id_pendaftaran, a.no_pendaftaran, a.asal_smp, a.nama_pendaftar, a.tmptlhr_pendaftar,
+            a.tgllhr_pendaftar, a.jk_pendaftar, a.agama_pendaftar, a.alamat_pendaftar, a.telp_pendaftar,
+            a.pilihan_jurusan, a.image_pendaftar, a.verified_berkas_pendaftar, a.lolos, b.id_jurusan, b.jurusan'
+        );
+        $this->db->from('tmp_pendaftaran a');
+        $this->db->join('tb_jurusan b', 'a.pilihan_jurusan = b.id_jurusan');
+        $this->db->group_by('a.id_pendaftaran');
+        $this->db->order_by('a.id_pendaftaran', 'DESC');
+        return $this->db->where('a.verified_berkas_pendaftar', 1)->where('a.lolos', 0)->get($this->_table)->result_array();
     }
 
     public function count()
@@ -32,7 +59,7 @@ class Pendaftaran_model extends CI_Model
 
     public function countUV()
     {
-        $query = $this->db->where('verified_berkas_pendaftar', 0)->get($this->_table);
+        $query = $this->db->where('verified_berkas_pendaftar', 0)->where('lolos', 0)->get($this->_table);
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {
@@ -42,7 +69,7 @@ class Pendaftaran_model extends CI_Model
 
     public function countV()
     {
-        $query = $this->db->where('verified_berkas_pendaftar', 1)->get($this->_table);
+        $query = $this->db->where('verified_berkas_pendaftar', 1)->where('lolos', 0)->get($this->_table);
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {

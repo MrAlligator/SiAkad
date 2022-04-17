@@ -8,6 +8,8 @@ class Siswa extends CI_Controller
         parent::__construct();
         $this->load->model('siswa_model');
         $this->load->model('users_model');
+        $this->load->model('kelas_model');
+        $this->load->model('jurusan_model');
     }
 
     public function index()
@@ -36,6 +38,8 @@ class Siswa extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
         $data['students'] = $this->siswa_model->getAll();
         $data['count'] = $this->siswa_model->count();
+        $data['classes'] = $this->kelas_model->getAll();
+        $data['majors'] = $this->jurusan_model->getAll();
         $last_id = $this->siswa_model->get_latest_id_user();
 
         $this->form_validation->set_rules('fname', 'Nama Depan', 'required|trim', [
@@ -98,17 +102,18 @@ class Siswa extends CI_Controller
                     $dataSiswa = [
                         'nis' => htmlspecialchars($this->input->post('nis')),
                         'nama_siswa' => htmlspecialchars($this->input->post('fname') . ' ' . $this->input->post('lname')),
-                        'kelas' => htmlspecialchars($this->input->post('kelas')),
+                        'id_kelas' => htmlspecialchars($this->input->post('kelas')),
+                        'id_jurusan' => htmlspecialchars($this->input->post('jurusan')),
                         'jk_siswa' => htmlspecialchars($this->input->post('jk')),
                         'agama_siswa' => htmlspecialchars($this->input->post('agama')),
                         'tmptlhr_siswa' => htmlspecialchars($this->input->post('tempatlhr')),
                         'tgllhr_siswa' => strtotime($this->input->post('tanggallhr')),
                         'alamat_siswa' => htmlspecialchars($this->input->post('alamat')),
                         'telp_siswa' => htmlspecialchars($this->input->post('telp')),
-                        'image_siswa' => $image
+                        'foto_siswa' => $image
                     ];
                     $dataLogin = [
-                        'id_konek' => $last_id + 1,
+                        'id_konek' => $last_id['id_siswa'] + 1,
                         'username_user' => $this->input->post('nis'),
                         'password_user' => password_hash($this->input->post('nis'), PASSWORD_DEFAULT),
                         'viewpassword_user' => $this->input->post('nis'),
@@ -139,6 +144,8 @@ class Siswa extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
         $data['studentdata'] = $this->siswa_model->getById($where);
         $data['count'] = $this->siswa_model->count();
+        $data['classes'] = $this->kelas_model->getAll();
+        $data['majors'] = $this->jurusan_model->getAll();
 
         $this->form_validation->set_rules('fname', 'Nama Depan', 'required|trim', [
             'required' => 'Nama tidak boleh kosong!'
@@ -196,15 +203,16 @@ class Siswa extends CI_Controller
                     $image = $gbr['file_name']; //nama file yang terupload dan sudah dienkripsi
                     $dataSiswa = [
                         'nis' => htmlspecialchars($this->input->post('nis')),
-                        'nama_siswa' => htmlspecialchars($this->input->post('fname')),
-                        'kelas' => htmlspecialchars($this->input->post('kelas')),
+                        'nama_siswa' => htmlspecialchars($this->input->post('fname') . ' ' . $this->input->post('lname')),
+                        'id_kelas' => htmlspecialchars($this->input->post('kelas')),
+                        'id_jurusan' => htmlspecialchars($this->input->post('jurusan')),
                         'jk_siswa' => htmlspecialchars($this->input->post('jk')),
                         'agama_siswa' => htmlspecialchars($this->input->post('agama')),
                         'tmptlhr_siswa' => htmlspecialchars($this->input->post('tempatlhr')),
                         'tgllhr_siswa' => strtotime($this->input->post('tanggallhr')),
                         'alamat_siswa' => htmlspecialchars($this->input->post('alamat')),
                         'telp_siswa' => htmlspecialchars($this->input->post('telp')),
-                        'image_siswa' => $image
+                        'foto_siswa' => $image
                     ];
                     $this->siswa_model->updateData($where, $dataSiswa);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Siswa berhasil diubah</div>');
@@ -216,8 +224,9 @@ class Siswa extends CI_Controller
             } else {
                 $dataSiswa = [
                     'nis' => htmlspecialchars($this->input->post('nis')),
-                    'nama_siswa' => htmlspecialchars($this->input->post('fname')),
-                    'kelas' => htmlspecialchars($this->input->post('kelas')),
+                    'nama_siswa' => htmlspecialchars($this->input->post('fname') . ' ' . $this->input->post('lname')),
+                    'id_kelas' => htmlspecialchars($this->input->post('kelas')),
+                    'id_jurusan' => htmlspecialchars($this->input->post('jurusan')),
                     'jk_siswa' => htmlspecialchars($this->input->post('jk')),
                     'agama_siswa' => htmlspecialchars($this->input->post('agama')),
                     'tmptlhr_siswa' => htmlspecialchars($this->input->post('tempatlhr')),
