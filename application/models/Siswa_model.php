@@ -9,7 +9,7 @@ class Siswa_model extends CI_Model
     {
         $this->db->select(
             'a.id_siswa, a.nis, a.nama_siswa, a.foto_siswa, a.id_kelas, a.id_jurusan, a.jk_siswa, a.agama_siswa,
-            a.tmptlhr_siswa, a.tgllhr_siswa, a.alamat_siswa, a.telp_siswa, a.image_siswa, b.id_kelas, b.kelas, c.id_jurusan, c.jurusan'
+            a.tmptlhr_siswa, a.tgllhr_siswa, a.alamat_siswa, a.telp_siswa, b.id_kelas, b.kelas, c.id_jurusan, c.jurusan'
         );
         $this->db->from('tb_siswa a');
         $this->db->join('tb_kelas b', 'a.id_kelas = b.id_kelas');
@@ -50,8 +50,8 @@ class Siswa_model extends CI_Model
     public function deleteData($id)
     {
         $row = $this->db->where($id, 'id_siswa')->get($this->_table)->row_array();
-        if ($row['image_siswa'] != 'default.png') {
-            unlink('./assets/img/siswa/' . $row['image_siswa']);
+        if ($row['foto_siswa'] != 'default.png') {
+            unlink('./assets/img/siswa/' . $row['foto_siswa']);
         }
         return $this->db->where($id)->delete($this->_table);
     }

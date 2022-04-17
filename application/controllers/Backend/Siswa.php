@@ -105,10 +105,10 @@ class Siswa extends CI_Controller
                         'tgllhr_siswa' => strtotime($this->input->post('tanggallhr')),
                         'alamat_siswa' => htmlspecialchars($this->input->post('alamat')),
                         'telp_siswa' => htmlspecialchars($this->input->post('telp')),
-                        'image_siswa' => $image
+                        'foto_siswa' => $image
                     ];
                     $dataLogin = [
-                        'id_konek' => $last_id + 1,
+                        'id_konek' => $last_id['id_siswa'] + 1,
                         'username_user' => $this->input->post('nis'),
                         'password_user' => password_hash($this->input->post('nis'), PASSWORD_DEFAULT),
                         'viewpassword_user' => $this->input->post('nis'),
@@ -204,7 +204,7 @@ class Siswa extends CI_Controller
                         'tgllhr_siswa' => strtotime($this->input->post('tanggallhr')),
                         'alamat_siswa' => htmlspecialchars($this->input->post('alamat')),
                         'telp_siswa' => htmlspecialchars($this->input->post('telp')),
-                        'image_siswa' => $image
+                        'foto_siswa' => $image
                     ];
                     $this->siswa_model->updateData($where, $dataSiswa);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Siswa berhasil diubah</div>');

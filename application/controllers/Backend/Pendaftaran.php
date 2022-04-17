@@ -7,6 +7,9 @@ class Pendaftaran extends CI_Controller
     {
         parent::__construct();
         $this->load->model('pendaftaran_model');
+        $this->load->model('siswa_model');
+        $this->load->model('mapel_model');
+        $this->load->model('users_model');
     }
 
     public function index()
@@ -164,11 +167,49 @@ class Pendaftaran extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
         $data['verifies'] = $this->pendaftaran_model->getVerified();
         $data['count'] = $this->pendaftaran_model->countV();
+        $data['countSiswa'] = $this->siswa_model->count();
 
         $this->load->view('backend/_partials/head', $data);
         $this->load->view('backend/_partials/sidebar', $data);
         $this->load->view('backend/_partials/topbar', $data);
         $this->load->view('backend/data/pendaftaran/verified', $data);
         $this->load->view('backend/_partials/foot', $data);
+    }
+
+    public function terima()
+    {
+        $mapel = $this->mapel_model->getAll();
+        $count_mapel = $this->mapel_model->count();
+        $id = $this->input->post('id');
+        $where = array('id_pendaftaran' => $id);
+        $last_id = $this->siswa_model->get_latest_id_user();
+        $dataSiswa = [
+            'nis' => $this->input->post('nis'),
+            'nama_siswa' => $this->input->post('nama'),
+            'foto_siswa' => $this->input->post('foto'),
+            'id_kelas' => 1,
+            'id_jurusan' => $this->input->post('jurusan'),
+            'jk_siswa' => $this->input->post('jk'),
+            'agama_siswa' => $this->input->post('agama'),
+            'tmptlhr_siswa' => $this->input->post('tmptlhr'),
+            'tgllhr_siswa' => $this->input->post('tgllhr'),
+            'alamat_siswa' => $this->input->post('alamat'),
+            'telp_siswa' => $this->input->post('telp')
+        ];
+        $dataUser = [
+            'id_konek' => $last_id['id_siswa'] + 1,
+            'username_user' => $this->input->post('nis'),
+            'password_user' => $this->input->post('nis'),
+            'viewpassword_user' => $this->input->post('nis'),
+            'status_user' => 5
+        ];
+        $data = [
+            'lolos' => 1
+        ];
+        $this->siswa_model->inputData($dataSiswa);
+        $this->users_model->inputData($dataUser);
+        $this->pendaftaran_model->updateData($where, $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Siswa diterima</div>');
+        redirect('administrator/data-calon-siswa-baru');
     }
 }

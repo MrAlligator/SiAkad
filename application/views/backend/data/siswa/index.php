@@ -101,7 +101,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="<?= base_url('assets/img/siswa/' . $student['image_siswa']) ?>" height="200" width="200" alt="">
+                            <img src="<?= base_url('assets/img/siswa/' . $student['foto_siswa']) ?>" height="200" width="200" alt="">
                         </div>
                         <div class="col-md-8">
                             <table>

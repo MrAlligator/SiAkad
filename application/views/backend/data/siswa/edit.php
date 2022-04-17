@@ -85,7 +85,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <img src="<?= base_url('assets/img/siswa/' . $studentdata['image_siswa']) ?>" width="300" height="300" id="image-prev" class="img-thumbnails" alt="">
+                        <img src="<?= base_url('assets/img/siswa/' . $studentdata['foto_siswa']) ?>" width="300" height="300" id="image-prev" class="img-thumbnails" alt="">
                         <p></p>
                         <label for="image">Gambar</label>
                         <input type="file" accept="image/*" class="form-control form-control-user" name="image" id="image" onchange="previewFile(this);">

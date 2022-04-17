@@ -32,9 +32,9 @@
                     <div class="col mb-3 mb-sm-0">
                         <select class="form-control" name="kelas" id="kelas" required>
                             <option value="" selected disabled>Pilih Kelas</option>
-                            <option value="X">X</option>
-                            <option value="XI">XI</option>
-                            <option value="XII">XII</option>
+                            <option value="1">X</option>
+                            <option value="2">XI</option>
+                            <option value="3">XII</option>
                         </select>
                     </div>
                     <div class="col mb-3 mb-sm-0">
