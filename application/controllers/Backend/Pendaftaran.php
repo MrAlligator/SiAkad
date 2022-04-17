@@ -161,13 +161,19 @@ class Pendaftaran extends CI_Controller
     public function calon()
     {
         $data['start'] = 0;
+        $data['st'] = 0;
+        $data['num'] = 0;
         $data['is_active'] = 'sbr';
         $data['title'] = "Calon Siswa Baru | SIAKAD SMK DARUSSALAM";
         $data['pageTitle'] = 'Calon Siswa Baru';
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
         $data['verifies'] = $this->pendaftaran_model->getVerified();
+        $data['accepts'] = $this->pendaftaran_model->getAccepted();
+        $data['rejects'] = $this->pendaftaran_model->getRejected();
         $data['count'] = $this->pendaftaran_model->countV();
         $data['countSiswa'] = $this->siswa_model->count();
+        $data['countAcc'] = $this->pendaftaran_model->countAcc();
+        $data['countRej'] = $this->pendaftaran_model->countRej();
 
         $this->load->view('backend/_partials/head', $data);
         $this->load->view('backend/_partials/sidebar', $data);
@@ -199,7 +205,7 @@ class Pendaftaran extends CI_Controller
         $dataUser = [
             'id_konek' => $last_id['id_siswa'] + 1,
             'username_user' => $this->input->post('nis'),
-            'password_user' => $this->input->post('nis'),
+            'password_user' => password_hash($this->input->post('nis'), PASSWORD_DEFAULT),
             'viewpassword_user' => $this->input->post('nis'),
             'status_user' => 5
         ];
@@ -210,6 +216,18 @@ class Pendaftaran extends CI_Controller
         $this->users_model->inputData($dataUser);
         $this->pendaftaran_model->updateData($where, $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Siswa diterima</div>');
+        redirect('administrator/data-calon-siswa-baru');
+    }
+
+    public function tolak()
+    {
+        $id = $this->input->post('id');
+        $where = array('id_pendaftaran' => $id);
+        $data = [
+            'lolos' => 2
+        ];
+        $this->pendaftaran_model->updateData($where, $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Siswa ditolak</div>');
         redirect('administrator/data-calon-siswa-baru');
     }
 }

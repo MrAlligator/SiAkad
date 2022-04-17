@@ -119,6 +119,7 @@ $route['tambah-jurusan'] = 'backend/jurusan/create';
 $route['tambah-pengajar'] = 'backend/pengajar/create';
 $route['administrator/tambah-jadwal-pembelajaran'] = 'backend/jadwal/create';
 $route['administrator/verify'] = 'backend/pendaftaran/terima';
+$route['administrator/reject'] = 'backend/pendaftaran/tolak';
 
 //Admin Delete
 $route['hapus-siswa/(:num)'] = function ($id_siswa) {

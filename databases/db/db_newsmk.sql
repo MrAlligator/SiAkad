@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Apr 2022 pada 09.27
+-- Waktu pembuatan: 17 Apr 2022 pada 14.28
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.0.15
 
@@ -295,8 +295,6 @@ CREATE TABLE `tb_siswa` (
 --
 
 INSERT INTO `tb_siswa` (`id_siswa`, `nis`, `nama_siswa`, `foto_siswa`, `id_kelas`, `id_jurusan`, `jk_siswa`, `agama_siswa`, `tmptlhr_siswa`, `tgllhr_siswa`, `alamat_siswa`, `telp_siswa`) VALUES
-(19, 'n112', 'Rizki', 'index.jpg', 1, 1, 'Perempuan', 'Islam', 'Banyuwangi', '1650099827', 'Sukosari', '082412531771'),
-(20, 'n113', 'Febrero Araya', 'index.jpg', 2, 1, 'Laki - Laki', 'Islam', 'Banyuwangi', '1650088761', 'Sukosari', '081234156112'),
 (21, '', '', 'safafs', 0, 0, '', '', '', '', '', ''),
 (22, '', 'safasf', 'asfafasfaf', 0, 0, '', '', '', '', '', ''),
 (23, '', 'asf', '', 0, 0, '', '', '', '', '', ''),
@@ -309,7 +307,8 @@ INSERT INTO `tb_siswa` (`id_siswa`, `nis`, `nama_siswa`, `foto_siswa`, `id_kelas
 (30, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
 (31, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
 (32, '', 'bsf', '', 0, 0, '', '', '', '', '', ''),
-(33, 'N2022015', 'Rendy Pratama', '3921c76b4cc9c3a8ed3ea1cca7c65b23.png', 1, 2, 'Laki - Laki', 'Islam', 'Bondowoso', '1108162800', 'Bondowoso', '082441552676');
+(33, 'N2022015', 'Rendy Pratama', '3921c76b4cc9c3a8ed3ea1cca7c65b23.png', 1, 2, 'Laki - Laki', 'Islam', 'Bondowoso', '1108162800', 'Bondowoso', '082441552676'),
+(34, 'N2022016', 'Ahmad Kasim', '4da8a22fa3bbb54b8c6157139dde5141.png', 2, 1, 'Laki - Laki', 'Islam', 'Nganjuk', '1110582000', 'Nganjuk', '082234156617');
 
 -- --------------------------------------------------------
 
@@ -335,7 +334,8 @@ INSERT INTO `tb_user` (`id_user`, `id_konek`, `username_user`, `password_user`, 
 (5, 7, '0826677344', '$2y$10$jvPD1igWVReBhejXqo40i.V1lIYrXeCYcarShm2sWRIJ85BVbbHWS', '0826677344', 2),
 (6, 8, '57647184', '$2y$10$eIzDXuKDi2eG74.rkZDIkeVXkhxV/sUe9MTQ.fLS/.wv8P5AZM/8m', '57647184', 2),
 (7, 9, '8863992', '$2y$10$8u2OnfvPtKWjrGnmNZo/Lu0ZlYcBoJ26t.1RfoAHIifkW3jZrnG0i', '8863992', 3),
-(8, 33, 'N2022015', 'N2022015', 'N2022015', 5);
+(8, 33, 'N2022015', 'N2022015', 'N2022015', 5),
+(9, 34, 'N2022016', '$2y$10$iBeBL3JqFc4j2weG7AUAauUWCx9kYJrEOKFIwnAzh5G2nG0W51B4i', 'N2022016', 5);
 
 -- --------------------------------------------------------
 
@@ -365,7 +365,7 @@ CREATE TABLE `tmp_pendaftaran` (
 --
 
 INSERT INTO `tmp_pendaftaran` (`id_pendaftaran`, `no_pendaftaran`, `asal_smp`, `nama_pendaftar`, `tmptlhr_pendaftar`, `tgllhr_pendaftar`, `jk_pendaftar`, `agama_pendaftar`, `alamat_pendaftar`, `telp_pendaftar`, `pilihan_jurusan`, `image_pendaftar`, `verified_berkas_pendaftar`, `lolos`) VALUES
-(1, '1650063741', 'SMPN 5 Bondowoso', 'Marissa Aridya Pasha', 'Bondowoso', '100007366', 'Perempuan', 'Islam', 'Bondowoso', '081335267827', 1, 'decb9187649184072300dc45bc84a805.png', 1, 0),
+(1, '1650063741', 'SMPN 5 Bondowoso', 'Marissa Aridya Pasha', 'Bondowoso', '100007366', 'Perempuan', 'Islam', 'Bondowoso', '081335267827', 1, 'decb9187649184072300dc45bc84a805.png', 1, 2),
 (2, '1650093266', 'SMPN 5 Bondowoso', 'Rendy Pratama', 'Bondowoso', '1108162800', 'Laki - Laki', 'Islam', 'Bondowoso', '082441552676', 2, '3921c76b4cc9c3a8ed3ea1cca7c65b23.png', 1, 1);
 
 --
@@ -530,13 +530,13 @@ ALTER TABLE `tb_prestasi`
 -- AUTO_INCREMENT untuk tabel `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `tmp_pendaftaran`
