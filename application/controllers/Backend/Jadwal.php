@@ -25,6 +25,10 @@ class Jadwal extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
         $data['jurusan'] = $this->jurusan_model->getAll();
         $data['kelas'] = $this->db->get('tb_kelas')->result_array();
+        $where = [
+            'a.nip' => $_SESSION['username']
+        ];
+        $data['jadwal'] = $this->jadwal_model->getWhere($where);
 
         $this->load->view('backend/_partials/head', $data);
         $this->load->view('backend/_partials/sidebar', $data);
