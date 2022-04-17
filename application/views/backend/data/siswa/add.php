@@ -10,7 +10,14 @@
             <div class="card-body">
                 <div class="form-group row">
                     <div class="col mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" name="nis" id="nis" placeholder="Nomor Induk Siswa"><?= form_error('nis', '<small class="text-danger pl-3">', '</small>') ?>
+                        <input type="text" class="form-control form-control-user" name="nis" id="nis" placeholder="Nomor Induk Siswa" readonly value="<?php if (strlen($count) == 1) {
+                                                                                                                                                            echo 'N' . date('Y') . '00' . ++$count;
+                                                                                                                                                        } elseif (strlen($count) == 2) {
+                                                                                                                                                            echo 'N' . date('Y') . '0' . ++$count;
+                                                                                                                                                        } elseif (strlen($count) == 3) {
+                                                                                                                                                            echo 'N' . date('Y') . ++$count;
+                                                                                                                                                        }
+                                                                                                                                                        ?>"><?= form_error('nis', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -30,14 +37,6 @@
                         </select>
                     </div>
                     <div class="col mb-3 mb-sm-0">
-                        <select class="form-control" name="kelas" id="kelas" required>
-                            <option value="" selected disabled>Pilih Kelas</option>
-                            <option value="1">X</option>
-                            <option value="2">XI</option>
-                            <option value="3">XII</option>
-                        </select>
-                    </div>
-                    <div class="col mb-3 mb-sm-0">
                         <select class="form-control" name="agama" id="agama" required>
                             <option value="" selected disabled>Pilih Agama</option>
                             <option value="Islam">Islam</option>
@@ -45,6 +44,24 @@
                             <option value="Hindu">Hindu</option>
                             <option value="Budha">Budha</option>
                             <option value="Katolik">Katolik</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <select name="kelas" id="kelas" class="form-control" required>
+                            <option value="" selected disabled>Pilih Kelas</option>
+                            <?php foreach ($classes as $class) : ?>
+                                <option value="<?= $class['id_kelas'] ?>"><?= $class['kelas'] ?></option>
+                            <?php endforeach; ?>
+                        </select><?= form_error('kelas', '<small class="text-danger pl-3">', '</small>') ?>
+                    </div>
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <select name="jurusan" id="jurusan" class="form-control" required>
+                            <option value="" selected disabled>Pilih Jurusan</option>
+                            <?php foreach ($majors as $major) : ?>
+                                <option value="<?= $major['id_jurusan'] ?>"><?= $major['jurusan'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>

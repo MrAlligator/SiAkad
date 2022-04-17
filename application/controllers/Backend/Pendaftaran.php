@@ -66,7 +66,7 @@ class Pendaftaran extends CI_Controller
             $this->load->view('backend/_partials/foot', $data);
         } else {
             //Config upload
-            $config['upload_path'] = './assets/img/pendaftar/'; //path folder upload
+            $config['upload_path'] = './assets/img/siswa/'; //path folder upload
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //tipe yang dapat diupload
             $config['encrypt_name'] = TRUE; //enkripsi nama file ketika diupload
 
@@ -81,13 +81,13 @@ class Pendaftaran extends CI_Controller
                     $gbr = $this->upload->data();
                     //config kompresi file
                     $config['image_library'] = 'gd2';
-                    $config['source_image'] = './assets/img/pendaftar/' . $gbr['file_name']; //source gambar yang akan dikompresi
+                    $config['source_image'] = './assets/img/siswa/' . $gbr['file_name']; //source gambar yang akan dikompresi
                     $config['create_thumb'] = FALSE; //thumbnail
                     $config['maintain_ratio'] = FALSE; //ratio gambar
                     $config['quality'] = '80%'; //kualitas kompresi
                     $config['width'] = 710; //menentukan lebar
                     $config['height'] = 420; //menentukan tinggi
-                    $config['new_image'] = './assets/img/pendaftar/' . $gbr['file_name']; //gambar hasil kompresi
+                    $config['new_image'] = './assets/img/siswa/' . $gbr['file_name']; //gambar hasil kompresi
                     //eksekusi kompresi
                     $this->load->library('image_lib', $config);
                     $this->image_lib->resize();

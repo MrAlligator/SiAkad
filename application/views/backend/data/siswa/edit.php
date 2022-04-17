@@ -31,20 +31,6 @@
                         </select>
                     </div>
                     <div class="col mb-3 mb-sm-0">
-                        <select class="form-control" name="kelas" id="kelas" required>
-                            <option value="" selected disabled>Pilih Kelas</option>
-                            <option value="X" <?php if ($studentdata['kelas'] == 'X') {
-                                                    echo 'selected';
-                                                } ?>>X</option>
-                            <option value="XI" <?php if ($studentdata['kelas'] == 'XI') {
-                                                    echo 'selected';
-                                                } ?>>XI</option>
-                            <option value="XII" <?php if ($studentdata['kelas'] == 'XII') {
-                                                    echo 'selected';
-                                                } ?>>XII</option>
-                        </select>
-                    </div>
-                    <div class="col mb-3 mb-sm-0">
                         <select class="form-control" name="agama" id="agama" required>
                             <option value="" selected disabled>Pilih Agama</option>
                             <option value="Islam" <?php if ($studentdata['agama_siswa'] == 'Islam') {
@@ -62,6 +48,32 @@
                             <option value="Katolik" <?php if ($studentdata['agama_siswa'] == 'Katolik') {
                                                         echo 'selected';
                                                     } ?>>Katolik</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <select name="kelas" id="kelas" class="form-control" required>
+                            <option value="" selected disabled>Pilih Kelas</option>
+                            <?php foreach ($classes as $class) : ?>
+                                <?php if ($studentdata['id_kelas'] == $class['id_kelas']) : ?>
+                                    <option value="<?= $class['id_kelas'] ?>" selected><?= $class['kelas'] ?></option>
+                                <?php else : ?>
+                                    <option value="<?= $class['id_kelas'] ?>"><?= $class['kelas'] ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select><?= form_error('kelas', '<small class="text-danger pl-3">', '</small>') ?>
+                    </div>
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <select name="jurusan" id="jurusan" class="form-control" required>
+                            <option value="" selected disabled>Pilih Jurusan</option>
+                            <?php foreach ($majors as $major) : ?>
+                                <?php if ($studentdata['id_jurusan'] == $major['id_jurusan']) : ?>
+                                    <option value="<?= $major['id_jurusan'] ?>" selected><?= $major['jurusan'] ?></option>
+                                <?php else : ?>
+                                    <option value="<?= $major['id_jurusan'] ?>"><?= $major['jurusan'] ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
