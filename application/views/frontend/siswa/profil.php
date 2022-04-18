@@ -45,9 +45,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer text-center">
-                        <a href="<?= base_url('tabel-siswa') ?>"><button class="btn btn-primary">Kembali</button></a>
-                    </div>
                 </div>
             </div>
             <div class="col-md-2">

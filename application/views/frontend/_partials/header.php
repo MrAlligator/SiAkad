@@ -18,8 +18,12 @@
                     </a>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-8 header-top-right">
-                    <?php if (isset($_SESSION['username'])) { ?>
-                        <a href="<?= base_url('dashboard') ?>" class="text-uppercase">menu lainnya</a>
+                    <?php if (isset($_SESSION['username'])) {
+                        if ($_SESSION['level'] == 5) { ?>
+                            <a href="<?= base_url('siswa') ?>" class="text-uppercase">menu siswa</a>
+                        <?php } else { ?>
+                            <a href="<?= base_url('dashboard') ?>" class="text-uppercase">menu lainnya</a>
+                        <?php } ?>
                         <a href="<?= base_url('logout') ?>" class="text-uppercase">keluar</a>
                     <?php } else { ?>
                         <a href="<?= base_url('login') ?>" class="text-uppercase">Masuk</a>
@@ -52,7 +56,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil</a>
                             <ul class="dropdown-menu">
@@ -65,10 +69,8 @@
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="<?= base_url('siswa') ?>">Siswa</a></li>
-                                <li class="nav-item"><a class="nav-link" href="<?= base_url('guru') ?>">Guru</a></li>
-                                <li class="nav-item"><a class="nav-link" href="karyawan.php">Karyawan</a></li>
-                                <li class="nav-item"><a class="nav-link" href="jadwal.php">Jadwal</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('tabel-siswa') ?>">Siswa</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('tabel-guru') ?>">Guru</a></li>
                             </ul>
                         </li>
                         </li>
