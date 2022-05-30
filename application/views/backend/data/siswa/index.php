@@ -15,7 +15,7 @@
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-header">Dropdown Header:</div>
                     <?php if ($user['status_user'] == 1) : ?>
-                        <a class="dropdown-item" href="<?= base_url('tambah-siswa') ?>">Tambah Baru</a>
+                        <a class="dropdown-item" href="<?= base_url('tambah-siswa') ?>">Tambah Baru (BranchFlow1)</a>
                     <?php endif; ?>
                     <a class="dropdown-item" href="<?= base_url('truncate-artikel') ?>">Kosongkan Tabel</a>
                 </div>
