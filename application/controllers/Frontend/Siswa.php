@@ -70,9 +70,10 @@ class Siswa extends CI_Controller
     {
         $siswa = $this->siswa_model->getByNIS(['nis' => $_SESSION['username']]);
         $where = [
-            'a.id_kelas' => $siswa['id_kelas'],
-            'a.id_jurusan' => $siswa['id_jurusan'],
+            'id_kelas' => $siswa['id_kelas'],
+            'id_jurusan' => $siswa['id_jurusan'],
         ];
+        $data['theories'] = $this->materi_model->getAll($where);
         $data['title'] = "Materi";
         $this->load->view('frontend/_partials/head', $data);
         $this->load->view('frontend/_partials/headerSiswa');

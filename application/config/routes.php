@@ -58,6 +58,31 @@ $route['login'] = 'frontend/login';
 $route['logout'] = 'frontend/login/logout';
 
 /* Frontend */
+//Jurusan
+$route['multimedia'] = 'welcome/multimedia';
+
+//Jurusan
+$route['multimedia'] = 'welcome/multimedia';
+
+//Ekstrakurikuler
+$route['pencak-silat'] = 'welcome/pencak_silat';
+$route['pramuka'] = 'welcome/pramuka';
+
+//Info
+$route['pengumuman'] = 'welcome/pengumuman';
+$route['berita'] = 'welcome/berita';
+
+//Galeri
+$route['foto'] = 'welcome/foto';
+$route['video'] = 'welcome/video';
+
+//Profil Sekolah
+$route['sambutan'] = 'welcome/sambutan';
+$route['sejarah'] = 'welcome/sejarah';
+$route['profil-singkat'] = 'welcome/profilSingkat';
+$route['visi-misi'] = 'welcome/visiMisi';
+$route['struktur'] = 'welcome/struktur';
+
 //Siswa
 $route['siswa'] = 'frontend/siswa/dashboard';
 $route['siswa/jadwal'] = 'frontend/siswa/jadwal';
@@ -76,12 +101,6 @@ $route['tabel-siswa'] = 'frontend/siswa';
 $route['detail-siswa/(:any)'] = function ($id_siswa) {
     return 'frontend/siswa/detail/' . $id_siswa;
 };
-//Profil Sekolah
-$route['sambutan'] = 'welcome/sambutan';
-$route['sejarah'] = 'welcome/sejarah';
-$route['profil-singkat'] = 'welcome/profilSingkat';
-$route['visi-misi'] = 'welcome/visiMisi';
-$route['struktur'] = 'welcome/struktur';
 
 //Admin
 $route['jurusan-multimedia'] = 'welcome/multimedia';

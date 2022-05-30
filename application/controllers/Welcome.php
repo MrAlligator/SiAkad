@@ -90,4 +90,74 @@ class Welcome extends CI_Controller
 		$this->load->view('frontend/_partials/footer');
 		$this->load->view('frontend/_partials/js');
 	}
+	public function pencak_silat()
+	{
+		$data['title'] = "pencak silat";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/pencak_silat');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function pramuka()
+	{
+		$data['title'] = "pramuka";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/pramuka');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function pengumuman()
+	{
+		$data['title'] = "pengumuman";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/pengumuman');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function berita()
+	{
+		$data['title'] = "berita";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/berita');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function foto()
+	{
+		$data['title'] = "galeri foto";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/foto');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function video()
+	{
+		$data['title'] = "video dokumentasi";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/video');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
+	public function prestasi()
+	{
+		$data['title'] = "prestasi dokumentasi";
+		$this->load->view('frontend/_partials/head', $data);
+		$this->load->view('frontend/_partials/header');
+		$this->load->view('frontend/_partials/banner', $data);
+		$this->load->view('frontend/home/prestasi');
+		$this->load->view('frontend/_partials/footer');
+		$this->load->view('frontend/_partials/js');
+	}
 }

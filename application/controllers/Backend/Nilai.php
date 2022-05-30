@@ -67,7 +67,8 @@ class Nilai extends CI_Controller
         $where = [
             'a.id_kelas' => $id_kelas,
             'a.id_jurusan' => $id_jurusan,
-            'a.nip' => $nip
+            'a.nip' => $nip,    
+            'a.kode_mapel' => $kode_mapel
         ];
 
         $data['data'] = $this->nilai_model->getAll($where);
@@ -86,7 +87,7 @@ class Nilai extends CI_Controller
         $data['title'] = "Edit Nilai | SIAKAD SMK DARUSSALAM";
         $data['pageTitle'] = 'Edit Nilai';
         $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
-        $data['data'] = $this->nilai_model->getById ($id);
+        $data['data'] = $this->nilai_model->getById($id);
 
         $this->form_validation->set_rules('kelas', 'Kelas', 'required|trim', [
             'required' => 'Kelas tidak boleh kosong!'
