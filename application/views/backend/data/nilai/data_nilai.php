@@ -72,7 +72,7 @@
                                 <th class="text-center"><?= $data['nilai_uts'] ?></th>
                                 <th class="text-center"><?= $data['nilai_uas'] ?></th>
                                 <th class="text-center"><?= $data['nilai_sikap'] ?></th>
-                                <th></th>
+                                <th><a href="<?= base_url('guru/edit-nilai/' . $data['id_nilai']) ?>" class="badge badge-warning"><i class="fas fa-fw fa-edit"></i></a></th>
                             </tr>
                         <?php } ?>
                     </tbody>

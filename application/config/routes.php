@@ -58,14 +58,21 @@ $route['login'] = 'frontend/login';
 $route['logout'] = 'frontend/login/logout';
 
 /* Frontend */
+//Siswa
+$route['siswa'] = 'frontend/siswa/dashboard';
+$route['siswa/jadwal'] = 'frontend/siswa/jadwal';
+$route['siswa/nilai'] = 'frontend/siswa/nilai';
+$route['siswa/materi'] = 'frontend/siswa/materi';
+$route['siswa/profil'] = 'frontend/siswa/profil';
+
 //Data Guru
-$route['guru'] = 'frontend/guru';
+$route['tabel-guru'] = 'frontend/guru';
 $route['detail-guru/(:any)'] = function ($id_siswa) {
     return 'frontend/siswa/detail/' . $id_siswa;
 };
 
 //Data Siswa
-$route['siswa'] = 'frontend/siswa';
+$route['tabel-siswa'] = 'frontend/siswa';
 $route['detail-siswa/(:any)'] = function ($id_siswa) {
     return 'frontend/siswa/detail/' . $id_siswa;
 };
@@ -182,6 +189,9 @@ $route['guru/materi'] = 'backend/materi';
 $route['guru/cari-nilai'] = 'backend/nilai/cari';
 $route['guru/data-nilai/(:num)'] = function ($id) {
     return 'backend/nilai/data_nilai/' . $id;
+};
+$route['guru/edit-nilai/(:num)'] = function ($id) {
+    return 'backend/nilai/edit/' . $id;
 };
 $route['guru/input-nilai'] = 'backend/nilai/input';
 $route['tambah-materi'] = 'backend/materi/create';

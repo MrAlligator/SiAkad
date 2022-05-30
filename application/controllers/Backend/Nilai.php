@@ -78,4 +78,38 @@ class Nilai extends CI_Controller
         $this->load->view('backend/data/nilai/data_nilai', $data);
         $this->load->view('backend/_partials/foot', $data);
     }
+
+    public function edit($id)
+    {
+        $data['start'] = 0;
+        $data['is_active'] = 'jwl';
+        $data['title'] = "Edit Nilai | SIAKAD SMK DARUSSALAM";
+        $data['pageTitle'] = 'Edit Nilai';
+        $data['user'] = $this->db->get_where('tb_user', ['username_user' => $this->session->userdata('username')])->row_array();
+        $data['data'] = $this->nilai_model->getById ($id);
+
+        $this->form_validation->set_rules('kelas', 'Kelas', 'required|trim', [
+            'required' => 'Kelas tidak boleh kosong!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('backend/_partials/head', $data);
+            $this->load->view('backend/_partials/sidebar', $data);
+            $this->load->view('backend/_partials/topbar', $data);
+            $this->load->view('backend/data/nilai/edit_nilai', $data);
+            $this->load->view('backend/_partials/foot', $data);
+        } else {
+            $data = [
+                'kode_mapel' => $this->input->post('mapel'),
+                'id_kelas' => $this->input->post('kelas'),
+                'id_jurusan' => $this->input->post('jurusan'),
+                'nip' => $this->input->post('pengajar'),
+                'jam' => $this->input->post('jam'),
+                'hari' => $this->input->post('hari')
+            ];
+            $this->jadwal_model->inputData($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
+            redirect('administrator/data-jadwal-pembelajaran');
+        }
+    }
 }
