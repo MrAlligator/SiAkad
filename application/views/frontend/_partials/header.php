@@ -83,22 +83,22 @@
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ekstrakurikuler</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="pencak_silat.php">Pencak Silat</a></li>
-                                <li class="nav-item"><a class="nav-link" href="pramuka.php">Pramuka</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('pencak-silat') ?>">Pencak Silat</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('pramuka') ?>">Pramuka</a></li>
                             </ul>
                         </li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Galeri</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="photo.php">Foto</a></li>
-                                <li class="nav-item"><a class="nav-link" href="video.php">Video</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('foto') ?>">Foto</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('video') ?>">Video</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item submenu dropdown">
+                        <li class=" nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Info</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="pengumuman.php">Pengumuman</a></li>
-                                <li class="nav-item"><a class="nav-link" href="berita.php">Berita</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('pengumuman') ?>">Pengumuman</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= base_url('berita') ?>">Berita</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="akademik2.php">Prestasi</a></li>
